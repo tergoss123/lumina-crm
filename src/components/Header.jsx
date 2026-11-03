@@ -7,6 +7,7 @@ export const Header = ({
   pendingCount, 
   onOpenQuickAction,
   appMode,
+  onSelectMode,
   onToggleAppMode 
 }) => {
   const [time, setTime] = useState('');
@@ -33,8 +34,8 @@ export const Header = ({
       <div className="bg-[#111827] text-white px-4 lg:px-8 py-2 flex items-center justify-between text-xs font-medium">
         <div className="flex items-center gap-3">
           <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          <span className="text-gray-300 font-semibold">Status Operasional Studio:</span>
-          <span className="text-gray-200 hidden sm:inline">Set Aktif • White Cyclorama A & Loft B Siap</span>
+          <span className="text-gray-300 font-semibold">Area Produksi Aktif:</span>
+          <span className="text-gray-200">Garut & Bandung • Unit Sesi Foto & Aerial Drone Siap</span>
         </div>
         <div className="flex items-center gap-4 text-gray-300">
           <div className="flex items-center gap-1.5 bg-gray-800/80 px-2 py-0.5 rounded text-xs">
@@ -42,14 +43,17 @@ export const Header = ({
             <span className="font-semibold text-white">{time || '12:00:00 WIB'}</span>
           </div>
           <span className="text-gray-600 hidden md:inline">•</span>
-          <span className="hidden md:inline text-gray-300">Jakarta & Bali Units</span>
+          <span className="hidden md:inline text-gray-300">Global State Synchronized</span>
         </div>
       </div>
 
       {/* Main Header */}
       <div className="px-4 lg:px-8 py-3 flex items-center justify-between">
-        <div className="flex items-center gap-6">
-          <div className="cursor-pointer group flex items-center gap-3">
+        <div className="flex items-center gap-4 sm:gap-6">
+          <div 
+            onClick={() => onSelectMode && onSelectMode('customer')}
+            className="cursor-pointer group flex items-center gap-3"
+          >
             <div className="w-9 h-9 rounded-lg bg-black text-white flex items-center justify-center font-bold text-lg tracking-tight shadow-sm">
               L
             </div>
@@ -58,49 +62,63 @@ export const Header = ({
                 <h1 className="text-xl lg:text-2xl font-bold tracking-tight text-gray-900 group-hover:text-gray-700 transition-colors">
                   Lumina Studios
                 </h1>
-                <span className="text-xs font-semibold px-2 py-0.5 bg-gray-100 text-gray-600 rounded">
-                  {appMode === 'customer' ? 'Portal Pelanggan' : 'CRM & Produksi'}
+                <span className="text-[11px] font-semibold px-2 py-0.5 bg-gray-100 text-gray-600 rounded">
+                  {appMode === 'customer' ? '/customer' : '/admin'}
                 </span>
               </div>
               <p className="text-xs text-gray-500 font-normal">
                 {appMode === 'customer' 
-                  ? 'Katalog Layanan & Reservasi Sesi Studio' 
-                  : 'Sistem Manajemen Pemesanan & Alur Kerja Studio'}
+                  ? 'Portal Pelanggan (Garut & Bandung)' 
+                  : 'Dasbor Manajemen CRM & Produksi'}
               </p>
             </div>
           </div>
 
-          <div className="hidden lg:flex items-center gap-2 pl-6 border-l border-gray-200">
-            <div className="px-2.5 py-1 bg-gray-50 text-gray-700 text-xs font-medium rounded border border-gray-200 flex items-center gap-1.5">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-              <span>Real-Time State Terhubung</span>
-            </div>
-            {pendingCount > 0 && (
-              <span className="px-2.5 py-1 bg-amber-50 text-amber-800 text-xs font-medium rounded border border-amber-200">
-                {pendingCount} Pesanan Baru Masuk
-              </span>
-            )}
+          {/* Route Switcher Selector (Desktop Pill) */}
+          <div className="hidden md:flex items-center bg-gray-100 p-1 rounded-xl border border-gray-200">
+            <button
+              onClick={() => onSelectMode && onSelectMode('customer')}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                appMode === 'customer'
+                  ? 'bg-white text-black shadow-xs'
+                  : 'text-gray-500 hover:text-black'
+              }`}
+            >
+              <User className="w-3.5 h-3.5" />
+              <span>/customer (Pelanggan)</span>
+            </button>
+            <button
+              onClick={() => onSelectMode && onSelectMode('admin')}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                appMode === 'admin'
+                  ? 'bg-white text-black shadow-xs'
+                  : 'text-gray-500 hover:text-black'
+              }`}
+            >
+              <LayoutDashboard className="w-3.5 h-3.5" />
+              <span>/admin (CRM Internal)</span>
+            </button>
           </div>
         </div>
 
         <div className="flex items-center gap-2 sm:gap-3">
           
-          {/* Mode Switch Button in Header */}
+          {/* Quick Route Toggle Button */}
           <button
             onClick={onToggleAppMode}
-            className={`flex items-center gap-2 px-3.5 py-2 text-xs font-bold rounded-lg transition-all shadow-xs border ${
+            className={`flex items-center gap-1.5 sm:gap-2 px-3 py-2 text-xs font-bold rounded-lg transition-all shadow-xs border ${
               appMode === 'customer' 
                 ? 'bg-black text-white hover:bg-gray-800 border-black' 
                 : 'bg-emerald-50 text-emerald-800 hover:bg-emerald-100 border-emerald-200'
             }`}
-            title="Ganti Mode Tampilan"
+            title="Beralih Jalur Akses /customer & /admin"
           >
             <ArrowRightLeft className="w-3.5 h-3.5" />
             <span className="hidden sm:inline">
-              {appMode === 'customer' ? 'Beralih ke Tim Internal (CRM)' : 'Buka Portal Pelanggan'}
+              {appMode === 'customer' ? 'Buka /admin (CRM)' : 'Buka /customer'}
             </span>
             <span className="sm:hidden">
-              {appMode === 'customer' ? 'CRM Admin' : 'Pelanggan'}
+              {appMode === 'customer' ? '/admin' : '/customer'}
             </span>
           </button>
 

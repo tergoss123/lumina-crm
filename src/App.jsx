@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { DesktopNav, MobileBottomNav } from './components/Navigation';
 import { DashboardView } from './components/DashboardView';
@@ -16,13 +16,25 @@ import { ArrowRightLeft, Sparkles, User, LayoutDashboard, ShieldCheck } from 'lu
 import { 
   INITIAL_BOOKINGS, 
   INITIAL_INVOICES, 
-  INITIAL_CLIENTS,
+  INITIAL_CLIENTS, 
   STUDIO_CREW 
 } from './data/mockData';
 
+// Determine initial mode based on URL route (/customer or /admin or hash #customer / #admin)
+const getInitialMode = () => {
+  if (typeof window === 'undefined') return 'customer';
+  const path = window.location.pathname.toLowerCase();
+  const hash = window.location.hash.toLowerCase();
+  if (path.includes('admin') || hash.includes('admin')) {
+    return 'admin';
+  }
+  // Default to customer portal as requested
+  return 'customer';
+};
+
 export function App() {
-  // App Mode: 'admin' (Internal CRM Dashboard) | 'customer' (Customer-Facing Portal)
-  const [appMode, setAppMode] = useState('admin');
+  // App Mode: 'customer' (/customer) | 'admin' (/admin)
+  const [appMode, setAppMode] = useState(getInitialMode);
   
   const [activeTab, setActiveTab] = useState('overview');
   const [bookings, setBookings] = useState(INITIAL_BOOKINGS);
@@ -31,6 +43,36 @@ export function App() {
   const [activeInvoiceId, setActiveInvoiceId] = useState(null);
   const [newBookingModalOpen, setNewBookingModalOpen] = useState(false);
   const [toast, setToast] = useState(null);
+
+  // Sync mode with browser URL & history
+  const handleSelectMode = (newMode) => {
+    setAppMode(newMode);
+    if (typeof window !== 'undefined' && window.history) {
+      const targetPath = newMode === 'admin' ? '/admin' : '/customer';
+      try {
+        window.history.pushState({ mode: newMode }, '', targetPath);
+      } catch (e) {
+        // Fallback to hash routing if pushState blocked
+        window.location.hash = newMode;
+      }
+    }
+  };
+
+  // Listen to browser Back/Forward buttons (popstate)
+  useEffect(() => {
+    const handlePopState = () => {
+      const path = window.location.pathname.toLowerCase();
+      const hash = window.location.hash.toLowerCase();
+      if (path.includes('admin') || hash.includes('admin')) {
+        setAppMode('admin');
+      } else {
+        setAppMode('customer');
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
 
   const showToast = ({ title, message, type = 'success' }) => {
     setToast({ title, message, type });
@@ -168,7 +210,7 @@ export function App() {
     });
   };
 
-  // Callback when a customer books & pays via CustomerPortal (Real-time Monolith Sync!)
+  // Callback when a customer books & pays via CustomerPortal (Real-time Monolith Global State Sync!)
   const handleCustomerBookingCreated = (newBookingRecord, newInvoiceRecord) => {
     setBookings(prev => [newBookingRecord, ...prev]);
     setInvoices(prev => [newInvoiceRecord, ...prev]);
@@ -195,32 +237,34 @@ export function App() {
         className="fixed bottom-20 md:bottom-6 right-4 z-50 flex items-center gap-1.5 p-1.5 bg-[#111827] text-white rounded-full shadow-2xl border border-gray-700/80 backdrop-blur-md transition-all hover:scale-105"
       >
         <button
-          onClick={() => setAppMode('customer')}
+          onClick={() => handleSelectMode('customer')}
           className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold transition-all ${
             appMode === 'customer' 
               ? 'bg-white text-black shadow-md' 
               : 'text-gray-300 hover:text-white'
           }`}
+          title="Buka Jalur Akses Pelanggan (/customer)"
         >
           <User className="w-3.5 h-3.5" />
-          <span>View as Customer</span>
+          <span>/customer</span>
         </button>
 
         <button
-          onClick={() => setAppMode('admin')}
+          onClick={() => handleSelectMode('admin')}
           className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold transition-all ${
             appMode === 'admin' 
               ? 'bg-white text-black shadow-md' 
               : 'text-gray-300 hover:text-white'
           }`}
+          title="Buka Jalur Akses Admin CRM (/admin)"
         >
           <LayoutDashboard className="w-3.5 h-3.5" />
-          <span>View as Admin (CRM)</span>
+          <span>/admin</span>
         </button>
 
         <div className="hidden lg:flex items-center gap-1 pr-2 pl-1 text-[10px] text-emerald-400 font-semibold border-l border-gray-700">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-          <span>Live Sync</span>
+          <span>Sync Active</span>
         </div>
       </aside>
 
@@ -231,21 +275,22 @@ export function App() {
         pendingCount={bookings.filter(b => b.workflowStatus === 'Inquiry' || b.workflowStatus === 'Booked').length}
         onOpenQuickAction={() => setActiveTab('pipeline')}
         appMode={appMode}
-        onToggleAppMode={() => setAppMode(prev => prev === 'admin' ? 'customer' : 'admin')}
+        onSelectMode={handleSelectMode}
+        onToggleAppMode={() => handleSelectMode(appMode === 'admin' ? 'customer' : 'admin')}
       />
 
       {/* Main Content Render based on appMode */}
       {appMode === 'customer' ? (
-        /* CUSTOMER-FACING PORTAL (Katalog, Checkout, Mockup Gateway, Success Receipt) */
+        /* CUSTOMER-FACING PORTAL (Katalog 5 Paket, Checkout Garut & Bandung, Mockup Gateway, Success Struk) */
         <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <CustomerPortal
             onBookingCreated={handleCustomerBookingCreated}
-            onSwitchToAdmin={() => setAppMode('admin')}
+            onSwitchToAdmin={() => handleSelectMode('admin')}
             showToast={showToast}
           />
         </main>
       ) : (
-        /* INTERNAL CRM DASBOR (Ringkasan, Pipeline, Kalender, Pasca-Prod, Faktur) */
+        /* INTERNAL CRM DASBOR (/admin: Ringkasan, Pipeline, Kalender, Pasca-Prod, Faktur) */
         <>
           {/* Desktop Navigation Tabs */}
           <DesktopNav

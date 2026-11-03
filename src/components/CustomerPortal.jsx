@@ -6,10 +6,8 @@ import {
   MapPin, 
   User, 
   Phone, 
-  Mail, 
   FileText, 
   CreditCard, 
-  Building2, 
   Smartphone, 
   QrCode, 
   ArrowRight, 
@@ -17,92 +15,133 @@ import {
   Copy, 
   ShieldCheck, 
   Camera, 
-  Film, 
+  Video,
   Clock, 
-  ChevronRight,
   ExternalLink,
-  Download,
-  ArrowLeft
+  ArrowLeft,
+  Home,
+  CheckCircle,
+  Building2,
+  Wallet
 } from 'lucide-react';
 import { formatRupiah, formatDateIndo } from '../utils/formatters';
 
 export const PACKAGES = [
   {
-    id: 'pkg-standard',
-    name: 'Standard Studio Session',
-    tier: 'Standard',
-    badge: 'Paket Esensial',
-    price: 48000000,
-    dpPrice: 24000000,
-    description: 'Sesi foto & video studio komersial / portret beresolusi tinggi dengan set pencahayaan terkalibrasi.',
+    id: 'pkg-wisuda',
+    name: 'Paket Foto Wisuda (Studio/Outdoor)',
+    tier: 'Wisuda',
+    badge: 'Paling Terjangkau',
+    price: 350000,
+    dpPrice: 175000,
+    category: 'Potret',
+    description: 'Sesi foto wisuda standar, cetak + file digital berkualitas tinggi untuk momen kelulusan berharga.',
     features: [
-      'Durasi 4 Jam Sesi Studio White Cyclorama',
-      'Kamera Cinema Sony FX9 Full Frame 4K',
-      '1 Lead Photographer + 1 Lighting Assistant',
-      '30 Foto High-End Retouched + 15s Teaser Video',
-      'Akses Private Cloud Vault Klien (Aktif 90 Hari)'
+      '45 Menit Sesi Foto (Studio / Outdoor Area Garut & Bandung)',
+      '10 Foto Master Retouched Resolusi Tinggi',
+      '1 Cetak Foto Ukuran 10R + Bingkai Minimalis',
+      'Akses Google Drive Seluruh File Mentah & Edited',
+      'Bisa Foto Tunggal, Bersama Orang Tua, atau Sahabat (Maks. 4 Orang)'
     ],
     recommended: false,
-    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&auto=format&fit=crop&q=80'
+    image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&auto=format&fit=crop&q=80'
   },
   {
-    id: 'pkg-signature',
-    name: 'Signature Editorial Campaign',
-    tier: 'Signature',
-    badge: 'Paling Diminati (Popular)',
-    price: 95000000,
-    dpPrice: 47500000,
-    description: 'Produksi sinematik penuh untuk kampanye busana, editorial majalah, dan komersial brand mewah.',
+    id: 'pkg-engagement',
+    name: 'Paket Engagement / Lamaran',
+    tier: 'Lamaran',
+    badge: 'Populer',
+    price: 1500000,
+    dpPrice: 750000,
+    category: 'Pernikahan',
+    description: 'Dokumentasi liputan foto & video lengkap untuk prosesi lamaran atau pertunangan yang sakral.',
     features: [
-      'Durasi 8 Jam Full-Day Sesi (Studio A / Lokasi Jakarta)',
-      'RED V-Raptor 8K VV + Cooke Anamorphic Prime Lenses',
-      'Squad Kru Lengkap: Director, Cinematographer, Gaffer, Stylist',
-      'Mastering Warna DaVinci Resolve 19 (Arri LogC3 to 35mm)',
-      '60 Foto Master Retouch + 60s Cinematic Film 4K',
-      'Ulasan Kolaboratif via Frame.io Enterprise'
-    ],
-    recommended: true,
-    image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&auto=format&fit=crop&q=80'
-  },
-  {
-    id: 'pkg-editorial',
-    name: 'Haute Couture & Luxury Wedding',
-    tier: 'Editorial',
-    badge: 'Prestige Edition',
-    price: 185000000,
-    dpPrice: 92500000,
-    description: 'Layanan produksi tanpa batas dengan armada kamera 8K ganda, drone RAW, dan kotak arsip kayu jati.',
-    features: [
-      'Unlimited Session Day (Jakarta / Bali On-Location)',
-      'Dual RED V-Raptor 8K Cameras + Drone DJI Inspire 3 RAW',
-      'Unit Produksi Eksekutif 6 Personel + Sound Engineer',
-      'Audio Master Dolby Atmos + Musik Scoring Original',
-      'Kotak Kayu Jati Archival Fine-Art Album Hahnemuhle',
-      'VIP Lifetime Access Private Cloud Vault (PIN Enkripsi)'
+      'Liputan Acara hingga 4 Jam di Garut / Bandung',
+      '1 Photographer + 1 Videographer Profesional',
+      'Semua File Foto Unedited via Google Drive',
+      '40 Foto Pilihan Color Graded & Retouched',
+      'Video Highlight Sinematik 1-2 Menit (Format Reels & 16:9)',
+      'Flashdisk Eksklusif Berisi Seluruh Dokumentasi'
     ],
     recommended: false,
     image: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80'
+  },
+  {
+    id: 'pkg-wedding',
+    name: 'Paket Wedding Outdoor + Cinematic Drone',
+    tier: 'Wedding Drone',
+    badge: 'Paket Lengkap Unggulan',
+    price: 3500000,
+    dpPrice: 1750000,
+    category: 'Pernikahan',
+    description: 'Liputan foto, video komprehensif, dan sesi aerial / drone sinematik 1 hari penuh untuk pernikahan impian.',
+    features: [
+      'Liputan 1 Hari Penuh (Akad & Resepsi) Area Garut & Bandung',
+      '2 Photographer + 2 Videographer + 1 Pilot Drone Bersertifikat',
+      'Sesi Aerial Cinematic Drone 4K (DJI Mini Pro / Air Series)',
+      'Teaser Reels 60 Detik Siap Upload (H+2 Acara)',
+      'Video Dokumentasi Sinematik Durasi 3-5 Menit (4K UHD)',
+      'Album Kolase Magnetik Eksklusif 20 Halaman + Flashdisk Kayu'
+    ],
+    recommended: true,
+    image: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80'
+  },
+  {
+    id: 'pkg-prewed',
+    name: 'Paket Pre-Wedding Casual (Foto Saja)',
+    tier: 'Pre-Wedding',
+    badge: 'Konsep Fleksibel',
+    price: 750000,
+    dpPrice: 375000,
+    category: 'Pernikahan',
+    description: 'Sesi foto outdoor kasual dan hangat di lokasi pilihan terbaik Garut atau Bandung.',
+    features: [
+      '2-3 Jam Sesi Pemotretan Outdoor (Kawah Kamojang, Situ Bagendit, Tebing Keraton, dll.)',
+      '1 Lead Photographer Berpengalaman',
+      '25 Foto Master Retouched & Tone Grading Khas Lumina',
+      'Konsultasi Konsep, Moodboard & Pemilihan Outfit',
+      'Seluruh File Original Beresolusi Penuh via Cloud'
+    ],
+    recommended: false,
+    image: 'https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=600&auto=format&fit=crop&q=80'
+  },
+  {
+    id: 'pkg-family',
+    name: 'Paket Family Portrait',
+    tier: 'Keluarga',
+    badge: 'Hangat & Intim',
+    price: 250000,
+    dpPrice: 125000,
+    category: 'Potret',
+    description: 'Sesi foto keluarga ringkas, hangat, dan berkesan untuk mengabadikan momen kebersamaan.',
+    features: [
+      '30-45 Menit Sesi Foto Studio / Home Visit (Garut & Bandung)',
+      'Maksimal 6 Anggota Keluarga',
+      '5 Foto Master Retouched & Dicetak Ukuran 8R',
+      'Seluruh File Mentah & Edited Diberikan via Google Drive',
+      'Properti Studio & Setup Pencahayaan Profesional'
+    ],
+    recommended: false,
+    image: 'https://images.unsplash.com/photo-1511895426328-dc8714191300?w=600&auto=format&fit=crop&q=80'
   }
 ];
 
 export const CustomerPortal = ({ onBookingCreated, onSwitchToAdmin, showToast }) => {
-  const [selectedPackage, setSelectedPackage] = useState(PACKAGES[1]);
+  const [selectedPackage, setSelectedPackage] = useState(PACKAGES[2]); // Default to Wedding Drone
   const [step, setStep] = useState('catalog'); // 'catalog' | 'checkout' | 'payment' | 'success'
 
-  // Form checkout state
+  // Form checkout state - Area Garut & Bandung
   const [formData, setFormData] = useState({
     customerName: '',
     whatsapp: '',
-    email: '',
+    location: 'Garut', // Dropdown: 'Garut' | 'Bandung'
     productionDate: '2026-11-20',
-    venue: 'Studio A (White Cyclorama) - Lumina Jakarta',
-    notes: 'Mohon pencahayaan dramatis high-fashion dengan palet warna monokromatik.',
+    notes: '',
     paymentOption: 'dp' // 'dp' (50%) | 'full' (100%)
   });
 
-  // Payment method selection
-  const [paymentCategory, setPaymentCategory] = useState('bank'); // 'bank' | 'ewallet'
-  const [paymentMethod, setPaymentMethod] = useState('bca'); // 'bca' | 'mandiri' | 'gopay' | 'ovo'
+  // Payment method selection: BCA, Mandiri, GoPay, DANA
+  const [paymentMethod, setPaymentMethod] = useState('bca'); // 'bca' | 'mandiri' | 'gopay' | 'dana'
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
 
   // Completed booking data for receipt
@@ -110,16 +149,18 @@ export const CustomerPortal = ({ onBookingCreated, onSwitchToAdmin, showToast })
 
   // Calculate prices
   const currentPrice = formData.paymentOption === 'dp' ? selectedPackage.dpPrice : selectedPackage.price;
-  const ppnAmount = currentPrice * 0.11;
+  const ppnAmount = Math.round(currentPrice * 0.11);
   const totalAmountToPay = currentPrice + ppnAmount;
 
   const handleCopy = (text, label) => {
     navigator.clipboard.writeText(text);
-    showToast({
-      title: 'Tersalin ke Clipboard',
-      message: `${label} (${text}) berhasil disalin.`,
-      type: 'success'
-    });
+    if (showToast) {
+      showToast({
+        title: 'Tersalin ke Clipboard',
+        message: `${label} (${text}) berhasil disalin.`,
+        type: 'success'
+      });
+    }
   };
 
   const handleProceedToCheckout = (pkg) => {
@@ -130,12 +171,14 @@ export const CustomerPortal = ({ onBookingCreated, onSwitchToAdmin, showToast })
 
   const handleProceedToPayment = (e) => {
     e.preventDefault();
-    if (!formData.customerName || !formData.whatsapp) {
-      showToast({
-        title: 'Form Belum Lengkap',
-        message: 'Mohon lengkapi Nama dan Nomor WhatsApp Anda.',
-        type: 'error'
-      });
+    if (!formData.customerName.trim() || !formData.whatsapp.trim()) {
+      if (showToast) {
+        showToast({
+          title: 'Form Belum Lengkap',
+          message: 'Mohon isi Nama Lengkap dan Nomor WhatsApp Anda.',
+          type: 'error'
+        });
+      }
       return;
     }
     setStep('payment');
@@ -148,40 +191,36 @@ export const CustomerPortal = ({ onBookingCreated, onSwitchToAdmin, showToast })
     setTimeout(() => {
       setIsProcessingPayment(false);
 
-      const bookingCode = `LMN-26-${Math.floor(100 + Math.random() * 900)}`;
+      const bookingCode = `LMN-GB-${Math.floor(100 + Math.random() * 900)}`;
       const invoiceNumber = `INV/LMN/26/11-${Math.floor(100 + Math.random() * 900)}`;
-      const pinVault = String(Math.floor(100000 + Math.random() * 900000));
       const isFull = formData.paymentOption === 'full';
 
+      // Record for Global State:
+      // Notice: workflowStatus is 'Inquiry' so it appears as a new incoming card in "Pesanan Masuk" / "Prospek"!
       const newBookingRecord = {
         id: `b-${Date.now()}`,
         bookingCode,
         clientId: `c-${Date.now()}`,
         clientName: formData.customerName,
-        eventType: selectedPackage.tier === 'Editorial' ? 'Pernikahan' : selectedPackage.tier === 'Signature' ? 'Editorial' : 'Potret',
+        whatsapp: formData.whatsapp,
+        eventType: selectedPackage.category,
         eventDate: formData.productionDate,
-        venue: formData.venue,
+        venue: `${selectedPackage.name} (${formData.location})`,
+        location: formData.location,
         packageTier: selectedPackage.tier,
+        packageName: selectedPackage.name,
         totalPrice: selectedPackage.price,
         dpAmount: isFull ? selectedPackage.price : selectedPackage.dpPrice,
         paymentStatus: isFull ? 'Fully Paid' : 'DP Paid',
-        workflowStatus: 'Booked', // Langsung masuk ke Terkonfirmasi (DP) di Pipeline!
-        assignedCrew: ['Arya Wiratama (Dir)', 'Radit Pratama (Cam)', 'Reza Wardhana (Gaffer)'],
-        galleryUrl: `https://vault.lumina.studio/c/${formData.customerName.toLowerCase().replace(/[^a-z0-9]/g, '-')}`,
+        workflowStatus: 'Inquiry', // Masuk ke kolom "Pesanan Masuk / Prospek" di Kanban Pipeline!
+        assignedCrew: formData.location === 'Garut' 
+          ? ['Tim Kreatif Lumina Garut (Dian & Rizky)'] 
+          : ['Tim Kreatif Lumina Bandung (Rama & Yoga)'],
+        galleryUrl: `https://vault.lumina.studio/client/${formData.customerName.toLowerCase().replace(/[^a-z0-9]/g, '-')}`,
         invoiceId: invoiceNumber,
-        notes: `[Online Booking Pelanggan] ${formData.notes}`,
-        pinVault,
+        notes: `[Pesanan Online ${formData.location}] WA: ${formData.whatsapp}. Catatan: ${formData.notes || 'Tidak ada catatan khusus.'}`,
         postProdProgress: 0,
-        callSheet: {
-          callTime: '07:00 WIB',
-          wrapTime: '19:00 WIB',
-          studioUnit: formData.venue.includes('Studio A') ? 'Studio A Infinite Cyclorama' : 'On-Location Unit',
-          equipmentChecklist: [
-            { id: 'eq-cp-1', name: 'RED V-Raptor 8K VV Cinema Package', ready: true },
-            { id: 'eq-cp-2', name: 'Arri SkyPanel X21 Softlight', ready: true },
-            { id: 'eq-cp-3', name: 'Wireless Teradek 4K Zero-Delay', ready: true }
-          ]
-        }
+        source: 'Portal Pelanggan Online'
       };
 
       const newInvoiceRecord = {
@@ -198,7 +237,10 @@ export const CustomerPortal = ({ onBookingCreated, onSwitchToAdmin, showToast })
         issuedDate: '2026-11-03',
         ppnApplied: true,
         pph23Applied: false,
-        virtualAccount: paymentMethod === 'bca' ? '1280 8821 9901 4452 (BCA)' : '8870 1492 8812 0031 (Mandiri)',
+        virtualAccount: paymentMethod === 'bca' ? '1280 8821 9901 4452 (BCA)' 
+                      : paymentMethod === 'mandiri' ? '8870 1492 8812 0031 (Mandiri)'
+                      : paymentMethod === 'dana' ? '0812 2345 6789 (DANA Bisnis)'
+                      : 'QRIS Dinamis GoPay',
         xenditLink: `https://checkout.xendit.co/web/${bookingCode.toLowerCase()}`
       };
 
@@ -216,12 +258,29 @@ export const CustomerPortal = ({ onBookingCreated, onSwitchToAdmin, showToast })
       setStep('success');
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
-      showToast({
-        title: 'Pembayaran Berhasil Diverifikasi',
-        message: `Pesanan ${bookingCode} otomatis masuk ke Pipeline CRM dan menambah saldo kas masuk!`,
-        type: 'success'
-      });
-    }, 1200);
+      if (showToast) {
+        showToast({
+          title: 'Pembayaran Berhasil Diverifikasi',
+          message: `Pesanan ${bookingCode} otomatis masuk ke kolom "Pesanan Masuk / Prospek" di Admin CRM!`,
+          type: 'success'
+        });
+      }
+    }, 1100);
+  };
+
+  // Reset to Catalog for "Kembali ke Beranda"
+  const handleBackToHome = () => {
+    setStep('catalog');
+    setFormData({
+      customerName: '',
+      whatsapp: '',
+      location: 'Garut',
+      productionDate: '2026-11-20',
+      notes: '',
+      paymentOption: 'dp'
+    });
+    setCompletedBooking(null);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -231,657 +290,623 @@ export const CustomerPortal = ({ onBookingCreated, onSwitchToAdmin, showToast })
       <div className="text-center space-y-3 pt-2 pb-6 border-b border-gray-200">
         <div className="inline-flex items-center gap-2 px-3 py-1 bg-black text-white text-xs font-semibold rounded-full">
           <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-          <span>Lumina Studios • Portal Pemesanan Resmi</span>
+          <span>Lumina Studios • Area Layanan Garut & Bandung</span>
         </div>
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-900">
-          Booking Sesi Produksi & Studio 8K
+          Layanan Foto & Video Sinematik
         </h1>
         <p className="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-          Pilih paket layanan sinematik, tentukan jadwal produksi Anda, dan selesaikan pembayaran dengan verifikasi instan.
+          Pilihan paket dokumentasi wisuda, lamaran, pre-wedding, family portrait, dan pernikahan dengan teknologi aerial drone di wilayah Garut & Bandung.
         </p>
-
-        {/* Multi-step progress indicator */}
-        <div className="flex items-center justify-center gap-2 sm:gap-4 pt-4 text-xs font-semibold">
-          <div className={`flex items-center gap-1.5 ${step === 'catalog' ? 'text-black font-bold' : 'text-gray-400'}`}>
-            <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs ${step === 'catalog' ? 'bg-black text-white' : 'bg-gray-100 text-gray-500'}`}>1</span>
-            <span>Pilih Layanan</span>
-          </div>
-          <span className="text-gray-300">•</span>
-          <div className={`flex items-center gap-1.5 ${step === 'checkout' ? 'text-black font-bold' : 'text-gray-400'}`}>
-            <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs ${step === 'checkout' ? 'bg-black text-white' : 'bg-gray-100 text-gray-500'}`}>2</span>
-            <span>Detail Booking</span>
-          </div>
-          <span className="text-gray-300">•</span>
-          <div className={`flex items-center gap-1.5 ${step === 'payment' ? 'text-black font-bold' : 'text-gray-400'}`}>
-            <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs ${step === 'payment' ? 'bg-black text-white' : 'bg-gray-100 text-gray-500'}`}>3</span>
-            <span>Pembayaran</span>
-          </div>
-          <span className="text-gray-300">•</span>
-          <div className={`flex items-center gap-1.5 ${step === 'success' ? 'text-emerald-700 font-bold' : 'text-gray-400'}`}>
-            <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs ${step === 'success' ? 'bg-emerald-600 text-white' : 'bg-gray-100 text-gray-500'}`}>4</span>
-            <span>Konfirmasi</span>
-          </div>
-        </div>
       </div>
 
-      {/* STEP 1: KATALOG PEMESANAN (2-3 PILIHAN PAKET LAYANAN STUDIO) */}
+      {/* ======================================================== */}
+      {/* STEP 1: KATALOG 5 PAKET LAYANAN STUDIO                   */}
+      {/* ======================================================== */}
       {step === 'catalog' && (
-        <div className="space-y-6 animate-fade-in">
-          <div className="flex items-center justify-between">
+        <section className="space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div>
-              <h2 className="text-xl font-bold text-gray-900">Pilihan Paket Produksi Eksklusif</h2>
-              <p className="text-xs text-gray-500 mt-0.5">Seluruh paket mencakup hak lisensi master dan akses brankas digital privat.</p>
+              <h2 className="text-xl font-bold text-gray-900">Pilihan Paket Layanan</h2>
+              <p className="text-xs text-gray-500">Harga transparan, sudah termasuk sesi produksi dan pengolahan master digital.</p>
             </div>
+            <span className="text-xs font-mono font-medium text-gray-500 bg-gray-100 px-2.5 py-1 rounded-full w-fit">
+              5 Paket Tersedia
+            </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {PACKAGES.map((pkg) => {
               const isSelected = selectedPackage.id === pkg.id;
-
               return (
-                <div 
+                <div
                   key={pkg.id}
-                  className={`bg-white rounded-2xl border transition-all flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-md ${
+                  className={`relative bg-white rounded-2xl border transition-all duration-200 flex flex-col justify-between overflow-hidden group shadow-sm hover:shadow-md ${
                     pkg.recommended 
-                      ? 'border-black ring-2 ring-black relative' 
+                      ? 'border-gray-900 ring-2 ring-gray-900/10' 
                       : 'border-gray-200 hover:border-gray-400'
                   }`}
                 >
-                  {pkg.recommended && (
-                    <div className="bg-black text-white text-[11px] font-bold text-center py-1 tracking-wider uppercase">
-                      ⭐ {pkg.badge}
+                  {/* Top Badge */}
+                  {pkg.badge && (
+                    <div className={`px-4 py-1.5 text-[11px] font-bold tracking-wider uppercase flex items-center justify-between ${
+                      pkg.recommended ? 'bg-black text-white' : 'bg-gray-100 text-gray-700'
+                    }`}>
+                      <span>{pkg.badge}</span>
+                      <span className="text-[10px] font-mono opacity-80">{pkg.tier}</span>
                     </div>
                   )}
 
-                  <div className="relative aspect-16/10 overflow-hidden bg-gray-100">
-                    <img 
-                      src={pkg.image} 
-                      alt={pkg.name} 
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-xs px-2.5 py-0.5 rounded text-xs font-bold text-gray-900">
-                      {pkg.tier} Edition
-                    </div>
-                  </div>
-
-                  <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
-                    <div className="space-y-2">
-                      <h3 className="text-lg font-bold text-gray-900 leading-snug">
+                  <div className="p-5 sm:p-6 space-y-4 flex-1">
+                    <div>
+                      <h3 className="text-lg font-bold text-gray-900 group-hover:text-black transition-colors leading-snug">
                         {pkg.name}
                       </h3>
-                      <p className="text-xs text-gray-500 leading-relaxed font-normal">
+                      <p className="text-xs text-gray-600 mt-1.5 leading-relaxed">
                         {pkg.description}
                       </p>
+                    </div>
 
-                      <div className="pt-2">
-                        <span className="text-2xl font-extrabold text-gray-900 tracking-tight block">
+                    {/* Pricing */}
+                    <div className="pt-2 border-t border-gray-100">
+                      <div className="flex items-baseline gap-1">
+                        <span className="text-2xl sm:text-3xl font-extrabold text-gray-900">
                           {formatRupiah(pkg.price)}
                         </span>
-                        <span className="text-xs text-emerald-700 font-semibold block mt-0.5">
-                          Opsi DP 50%: {formatRupiah(pkg.dpPrice)}
-                        </span>
                       </div>
+                      <span className="text-[11px] text-emerald-700 font-semibold block mt-0.5">
+                        Opsi DP 50%: {formatRupiah(pkg.dpPrice)}
+                      </span>
                     </div>
 
-                    <div className="space-y-2 pt-3 border-t border-gray-100 text-xs">
-                      <p className="font-semibold text-gray-700">Fasilitas Termasuk:</p>
+                    {/* Features list */}
+                    <ul className="text-xs text-gray-600 space-y-2 pt-2 border-t border-gray-100">
                       {pkg.features.map((feat, idx) => (
-                        <div key={idx} className="flex items-start gap-2 text-gray-600">
+                        <li key={idx} className="flex items-start gap-2">
                           <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
-                          <span>{feat}</span>
-                        </div>
+                          <span className="leading-tight">{feat}</span>
+                        </li>
                       ))}
-                    </div>
+                    </ul>
+                  </div>
 
+                  {/* Card Action */}
+                  <div className="p-5 sm:p-6 pt-0">
                     <button
                       onClick={() => handleProceedToCheckout(pkg)}
-                      className={`w-full py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 mt-4 shadow-sm ${
-                        pkg.recommended 
-                          ? 'bg-black hover:bg-gray-800 text-white' 
-                          : 'bg-gray-100 hover:bg-black hover:text-white text-gray-900'
+                      className={`w-full py-3 px-4 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all ${
+                        pkg.recommended
+                          ? 'bg-black hover:bg-neutral-800 text-white shadow-sm'
+                          : 'bg-gray-900 hover:bg-black text-white'
                       }`}
                     >
                       <span>Pilih Paket Ini</span>
-                      <ArrowRight className="w-4 h-4" />
+                      <ArrowRight className="w-3.5 h-3.5" />
                     </button>
                   </div>
                 </div>
               );
             })}
           </div>
-        </div>
+        </section>
       )}
 
-      {/* STEP 2: FORM CHECKOUT (NAMA, TANGGAL, CATATAN) */}
+      {/* ======================================================== */}
+      {/* STEP 2: FORM CHECKOUT DETAIL PESANAN                     */}
+      {/* ======================================================== */}
       {step === 'checkout' && (
-        <div className="bg-white rounded-2xl border border-gray-200 p-6 sm:p-8 space-y-6 shadow-sm animate-fade-in">
-          <div className="flex items-center justify-between pb-4 border-b border-gray-200">
-            <div>
-              <button 
-                onClick={() => setStep('catalog')}
-                className="text-xs font-semibold text-gray-500 hover:text-black flex items-center gap-1 mb-1"
-              >
-                <ArrowLeft className="w-3.5 h-3.5" />
-                <span>Kembali Pilih Paket</span>
-              </button>
-              <h2 className="text-xl font-bold text-gray-900">Formulir Pemesanan Sesi</h2>
-            </div>
-            <div className="text-right">
-              <span className="text-xs text-gray-500 block">Paket Dipilih:</span>
-              <span className="text-sm font-bold text-gray-900">{selectedPackage.name}</span>
-            </div>
+        <section className="space-y-6">
+          <div className="flex items-center justify-between">
+            <button
+              onClick={() => setStep('catalog')}
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-gray-600 hover:text-black transition-colors"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" />
+              <span>Ganti Pilihan Paket</span>
+            </button>
+            <span className="text-xs text-gray-500 font-medium">Langkah 2 dari 3</span>
           </div>
 
-          <form onSubmit={handleProceedToPayment} className="space-y-6 text-sm">
-            
-            {/* Customer Contact Details */}
-            <div className="space-y-4">
-              <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider border-b border-gray-100 pb-1">
-                1. Identitas Pelanggan
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {/* Form Inputs */}
+            <form onSubmit={handleProceedToPayment} className="lg:col-span-2 bg-white rounded-2xl border border-gray-200 p-6 sm:p-8 space-y-6 shadow-sm">
+              <div className="border-b border-gray-100 pb-4">
+                <h2 className="text-xl font-bold text-gray-900">Form Pemesanan Layanan</h2>
+                <p className="text-xs text-gray-500 mt-0.5">Isi data lengkap kontak dan preferensi jadwal untuk wilayah Garut atau Bandung.</p>
+              </div>
+
+              <div className="space-y-4 text-xs">
+                {/* Nama Pelanggan */}
                 <div>
-                  <label className="block text-gray-700 font-semibold mb-1">
-                    Nama Lengkap Pelanggan / Brand *
+                  <label className="block font-semibold text-gray-800 mb-1.5">
+                    Nama Lengkap Pelanggan *
                   </label>
                   <div className="relative">
-                    <User className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                    <User className="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                     <input
                       type="text"
                       required
-                      placeholder="Contoh: Jessica Mila & Yakup"
+                      placeholder="Contoh: Muhammad Farhan / Nabila Rahma"
                       value={formData.customerName}
                       onChange={(e) => setFormData({ ...formData, customerName: e.target.value })}
-                      className="w-full pl-9 pr-3 py-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:border-black font-medium"
+                      className="w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-black text-gray-900 text-xs font-medium"
                     />
                   </div>
                 </div>
 
-                <div>
-                  <label className="block text-gray-700 font-semibold mb-1">
-                    Nomor WhatsApp Aktif *
-                  </label>
-                  <div className="relative">
-                    <Phone className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
-                    <input
-                      type="text"
-                      required
-                      placeholder="+62 812 8899 0011"
-                      value={formData.whatsapp}
-                      onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
-                      className="w-full pl-9 pr-3 py-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:border-black font-medium"
-                    />
+                {/* WhatsApp & Lokasi (Dropdown) */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block font-semibold text-gray-800 mb-1.5">
+                      Nomor WhatsApp Aktif *
+                    </label>
+                    <div className="relative">
+                      <Phone className="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                      <input
+                        type="tel"
+                        required
+                        placeholder="Contoh: 0812-3456-7890"
+                        value={formData.whatsapp}
+                        onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
+                        className="w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-black text-gray-900 text-xs font-medium"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block font-semibold text-gray-800 mb-1.5">
+                      Lokasi Pelaksanaan (Dropdown) *
+                    </label>
+                    <div className="relative">
+                      <MapPin className="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                      <select
+                        value={formData.location}
+                        onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+                        className="w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-black text-gray-900 text-xs font-medium bg-white"
+                      >
+                        <option value="Garut">Area Garut (Studio / Outdoor Kota & Sekitarnya)</option>
+                        <option value="Bandung">Area Bandung (Studio / Outdoor Bandung Raya)</option>
+                      </select>
+                    </div>
                   </div>
                 </div>
 
+                {/* Tanggal Produksi */}
                 <div>
-                  <label className="block text-gray-700 font-semibold mb-1">
-                    Email Konfirmasi
+                  <label className="block font-semibold text-gray-800 mb-1.5">
+                    Tanggal Rencana Produksi / Sesi Foto *
                   </label>
                   <div className="relative">
-                    <Mail className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
-                    <input
-                      type="email"
-                      placeholder="jessica@management.id"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full pl-9 pr-3 py-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:border-black font-medium"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-gray-700 font-semibold mb-1">
-                    Tanggal Produksi yang Diinginkan *
-                  </label>
-                  <div className="relative">
-                    <Calendar className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                    <Calendar className="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                     <input
                       type="date"
                       required
                       value={formData.productionDate}
                       onChange={(e) => setFormData({ ...formData, productionDate: e.target.value })}
-                      className="w-full pl-9 pr-3 py-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:border-black font-medium"
+                      className="w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-black text-gray-900 text-xs font-medium"
                     />
                   </div>
                 </div>
-              </div>
 
-              <div className="text-xs">
-                <label className="block text-gray-700 font-semibold mb-1">
-                  Lokasi / Pilihan Studio
-                </label>
-                <div className="relative">
-                  <MapPin className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
-                  <input
-                    type="text"
-                    value={formData.venue}
-                    onChange={(e) => setFormData({ ...formData, venue: e.target.value })}
-                    className="w-full pl-9 pr-3 py-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:border-black font-medium"
+                {/* Catatan Khusus */}
+                <div>
+                  <label className="block font-semibold text-gray-800 mb-1.5">
+                    Catatan Tambahan (Konsep, Alamat Spesifik, atau Permintaan Khusus)
+                  </label>
+                  <textarea
+                    rows={3}
+                    placeholder="Contoh: Lokasi outdoor di Situ Cangkuang Garut, request foto candid saat matahari terbenam."
+                    value={formData.notes}
+                    onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
+                    className="w-full p-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-black text-gray-900 text-xs font-medium"
                   />
                 </div>
-              </div>
 
-              <div className="text-xs">
-                <label className="block text-gray-700 font-semibold mb-1">
-                  Catatan Khusus & Brief Kreatif
-                </label>
-                <textarea
-                  rows={2}
-                  value={formData.notes}
-                  onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                  placeholder="Ceritakan konsep visual, referensi moodboard, atau kebutuhan busana..."
-                  className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:border-black text-xs font-medium"
-                />
-              </div>
-            </div>
+                {/* Payment Option: DP vs Full */}
+                <div className="pt-2">
+                  <label className="block font-semibold text-gray-800 mb-2">
+                    Pilihan Termin Pembayaran:
+                  </label>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <label className={`p-3.5 rounded-xl border cursor-pointer transition-all flex items-start gap-3 ${
+                      formData.paymentOption === 'dp' 
+                        ? 'border-black bg-gray-50/80 ring-1 ring-black' 
+                        : 'border-gray-200 hover:border-gray-300'
+                    }`}>
+                      <input
+                        type="radio"
+                        name="paymentOption"
+                        checked={formData.paymentOption === 'dp'}
+                        onChange={() => setFormData({ ...formData, paymentOption: 'dp' })}
+                        className="mt-0.5 text-black focus:ring-black"
+                      />
+                      <div>
+                        <span className="font-bold text-gray-900 block text-xs">Uang Muka / DP 50%</span>
+                        <span className="text-[11px] text-gray-500 block mt-0.5">
+                          Bayar {formatRupiah(selectedPackage.dpPrice)} sekarang, pelunasan saat sesi selesai.
+                        </span>
+                      </div>
+                    </label>
 
-            {/* Payment Term Option */}
-            <div className="space-y-3 pt-2">
-              <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider border-b border-gray-100 pb-1">
-                2. Pilihan Pembayaran
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-                <div 
-                  onClick={() => setFormData({ ...formData, paymentOption: 'dp' })}
-                  className={`p-4 rounded-xl border cursor-pointer transition-all ${
-                    formData.paymentOption === 'dp' 
-                      ? 'border-black bg-gray-50 ring-2 ring-black' 
-                      : 'border-gray-200 hover:border-gray-400 bg-white'
-                  }`}
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="font-bold text-gray-900 text-sm">Uang Muka (DP 50%)</span>
-                    <span className="px-2 py-0.5 bg-blue-50 text-blue-700 font-semibold rounded text-[10px]">
-                      Konfirmasi Jadwal
-                    </span>
+                    <label className={`p-3.5 rounded-xl border cursor-pointer transition-all flex items-start gap-3 ${
+                      formData.paymentOption === 'full' 
+                        ? 'border-black bg-gray-50/80 ring-1 ring-black' 
+                        : 'border-gray-200 hover:border-gray-300'
+                    }`}>
+                      <input
+                        type="radio"
+                        name="paymentOption"
+                        checked={formData.paymentOption === 'full'}
+                        onChange={() => setFormData({ ...formData, paymentOption: 'full' })}
+                        className="mt-0.5 text-black focus:ring-black"
+                      />
+                      <div>
+                        <span className="font-bold text-gray-900 block text-xs">Pelunasan Penuh 100%</span>
+                        <span className="text-[11px] text-gray-500 block mt-0.5">
+                          Bayar {formatRupiah(selectedPackage.price)} langsung lunas di awal.
+                        </span>
+                      </div>
+                    </label>
                   </div>
-                  <p className="text-gray-500 mt-1">Bayar separuh sekarang untuk mengunci jadwal studio & kru.</p>
-                  <p className="text-base font-extrabold text-gray-900 mt-2">
-                    {formatRupiah(selectedPackage.dpPrice)}
-                  </p>
-                </div>
-
-                <div 
-                  onClick={() => setFormData({ ...formData, paymentOption: 'full' })}
-                  className={`p-4 rounded-xl border cursor-pointer transition-all ${
-                    formData.paymentOption === 'full' 
-                      ? 'border-black bg-gray-50 ring-2 ring-black' 
-                      : 'border-gray-200 hover:border-gray-400 bg-white'
-                  }`}
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="font-bold text-gray-900 text-sm">Pelunasan Penuh (100%)</span>
-                    <span className="px-2 py-0.5 bg-emerald-50 text-emerald-700 font-semibold rounded text-[10px]">
-                      Prioritas Lab
-                    </span>
-                  </div>
-                  <p className="text-gray-500 mt-1">Bebas administrasi pelunasan kemudian saat serah terima master.</p>
-                  <p className="text-base font-extrabold text-gray-900 mt-2">
-                    {formatRupiah(selectedPackage.price)}
-                  </p>
                 </div>
               </div>
-            </div>
 
-            {/* Summary Box */}
-            <div className="bg-gray-50 p-4 rounded-xl border border-gray-200 space-y-2 text-xs">
-              <div className="flex justify-between text-gray-600">
-                <span>Subtotal ({formData.paymentOption === 'dp' ? 'DP 50%' : 'Lunas 100%'}):</span>
-                <span className="font-bold text-gray-900">{formatRupiah(currentPrice)}</span>
+              <div className="pt-4 border-t border-gray-100 flex justify-end">
+                <button
+                  type="submit"
+                  className="w-full sm:w-auto px-6 py-3 bg-black hover:bg-neutral-800 text-white font-bold rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-sm"
+                >
+                  <span>Lanjut ke Pembayaran</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
               </div>
-              <div className="flex justify-between text-gray-600">
-                <span>PPN 11% (UU HPP):</span>
-                <span className="font-bold text-gray-900">{formatRupiah(ppnAmount)}</span>
-              </div>
-              <div className="border-t border-gray-200 pt-2 flex justify-between text-base font-extrabold text-gray-900">
-                <span>Total yang Harus Dibayar:</span>
-                <span>{formatRupiah(totalAmountToPay)}</span>
-              </div>
-            </div>
+            </form>
 
-            <div className="flex items-center justify-end gap-3 pt-2">
-              <button
-                type="button"
-                onClick={() => setStep('catalog')}
-                className="px-4 py-2.5 border border-gray-300 hover:border-black rounded-lg text-xs font-semibold text-gray-700"
-              >
-                Ganti Paket
-              </button>
-              <button
-                type="submit"
-                className="px-6 py-2.5 bg-black hover:bg-gray-800 text-white font-bold rounded-lg text-xs uppercase tracking-wider transition-all flex items-center gap-2 shadow-sm"
-              >
-                <span>Lanjut ke Pembayaran</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
+            {/* Sidebar Summary Card */}
+            <div className="bg-white rounded-2xl border border-gray-200 p-6 space-y-5 h-fit shadow-sm">
+              <div className="border-b border-gray-100 pb-3">
+                <span className="text-[10px] uppercase font-mono tracking-widest text-gray-500 block">Ringkasan Pesanan</span>
+                <h3 className="font-bold text-base text-gray-900 mt-1">{selectedPackage.name}</h3>
+                <span className="inline-block mt-1 text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
+                  Area: {formData.location}
+                </span>
+              </div>
+
+              <div className="space-y-2.5 text-xs text-gray-600">
+                <div className="flex justify-between">
+                  <span>Harga Paket:</span>
+                  <span className="font-bold text-gray-900">{formatRupiah(selectedPackage.price)}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Termin Dipilih:</span>
+                  <span className="font-semibold text-gray-900">{formData.paymentOption === 'dp' ? 'DP 50%' : 'Lunas 100%'}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Subtotal:</span>
+                  <span className="font-bold text-gray-900">{formatRupiah(currentPrice)}</span>
+                </div>
+                <div className="flex justify-between text-gray-500">
+                  <span>PPN (11%):</span>
+                  <span>{formatRupiah(ppnAmount)}</span>
+                </div>
+                <div className="pt-2 border-t border-gray-100 flex justify-between items-baseline text-sm">
+                  <span className="font-bold text-gray-900">Total Ditagihkan:</span>
+                  <span className="text-lg font-extrabold text-gray-900">{formatRupiah(totalAmountToPay)}</span>
+                </div>
+              </div>
+
+              <div className="p-3 bg-gray-50 rounded-xl text-[11px] text-gray-500 space-y-1">
+                <div className="flex items-center gap-1.5 text-gray-700 font-semibold">
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                  <span>Jaminan Kepuasan Lumina</span>
+                </div>
+                <p>Termasuk revisi tone warna dan pengiriman berkas digital via cloud.</p>
+              </div>
             </div>
-          </form>
-        </div>
+          </div>
+        </section>
       )}
 
-      {/* STEP 3: MOCKUP PEMBAYARAN (PAYMENT GATEWAY FUNCTIONAL) */}
+      {/* ======================================================== */}
+      {/* STEP 3: MOCKUP PEMBAYARAN (BCA, MANDIRI, GOPAY, DANA)     */}
+      {/* ======================================================== */}
       {step === 'payment' && (
-        <div className="bg-white rounded-2xl border border-gray-200 p-6 sm:p-8 space-y-6 shadow-sm animate-fade-in">
-          <div className="flex items-center justify-between pb-4 border-b border-gray-200">
-            <div>
-              <button 
-                onClick={() => setStep('checkout')}
-                className="text-xs font-semibold text-gray-500 hover:text-black flex items-center gap-1 mb-1"
-              >
-                <ArrowLeft className="w-3.5 h-3.5" />
-                <span>Ubah Data Checkout</span>
-              </button>
-              <h2 className="text-xl font-bold text-gray-900">Gerbang Pembayaran Studio (Payment Gateway)</h2>
-            </div>
-            <div className="text-right">
-              <span className="text-xs text-gray-500 block">Total Ditagihkan:</span>
-              <span className="text-lg font-extrabold text-gray-900">{formatRupiah(totalAmountToPay)}</span>
-            </div>
+        <section className="space-y-6">
+          <div className="flex items-center justify-between">
+            <button
+              onClick={() => setStep('checkout')}
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-gray-600 hover:text-black transition-colors"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" />
+              <span>Kembali ke Detail Pesanan</span>
+            </button>
+            <span className="text-xs text-gray-500 font-medium">Langkah 3 dari 3</span>
           </div>
 
-          {/* Payment Method Switcher Tabs */}
-          <div className="grid grid-cols-2 gap-3 p-1 bg-gray-100 rounded-xl">
-            <button
-              onClick={() => {
-                setPaymentCategory('bank');
-                setPaymentMethod('bca');
-              }}
-              className={`py-2.5 px-4 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-2 ${
-                paymentCategory === 'bank' 
-                  ? 'bg-white text-gray-900 shadow-sm' 
-                  : 'text-gray-500 hover:text-black'
-              }`}
-            >
-              <Building2 className="w-4 h-4" />
-              <span>Transfer Virtual Account</span>
-            </button>
+          <div className="max-w-2xl mx-auto bg-white rounded-2xl border border-gray-200 p-6 sm:p-8 space-y-6 shadow-sm">
+            <div className="text-center space-y-1 border-b border-gray-100 pb-4">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded-full inline-block">
+                Simulasi Payment Gateway Aktif
+              </span>
+              <h2 className="text-xl font-bold text-gray-900">Pilih Metode Pembayaran</h2>
+              <p className="text-xs text-gray-500">Pilih salah satu kanal pembayaran untuk menyelesaikan pemesanan.</p>
+            </div>
 
-            <button
-              onClick={() => {
-                setPaymentCategory('ewallet');
-                setPaymentMethod('gopay');
-              }}
-              className={`py-2.5 px-4 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-2 ${
-                paymentCategory === 'ewallet' 
-                  ? 'bg-white text-gray-900 shadow-sm' 
-                  : 'text-gray-500 hover:text-black'
-              }`}
-            >
-              <Smartphone className="w-4 h-4" />
-              <span>E-Wallet & QRIS</span>
-            </button>
-          </div>
+            {/* Total Display */}
+            <div className="bg-gray-50 p-4 rounded-xl border border-gray-200 text-center space-y-1">
+              <span className="text-xs text-gray-500">Total yang Harus Dibayar:</span>
+              <div className="text-2xl sm:text-3xl font-extrabold text-gray-900">
+                {formatRupiah(totalAmountToPay)}
+              </div>
+              <span className="text-[11px] text-gray-500 block">
+                {selectedPackage.name} • Lokasi {formData.location} ({formData.paymentOption === 'dp' ? 'DP 50%' : 'Lunas'})
+              </span>
+            </div>
 
-          {/* Bank Transfer Selection (BCA, Mandiri) */}
-          {paymentCategory === 'bank' && (
-            <div className="space-y-4">
-              <div className="grid grid-cols-2 gap-3 text-xs">
+            {/* 4 Payment Options: BCA, Mandiri, GoPay, DANA */}
+            <div className="space-y-3">
+              <label className="block text-xs font-bold text-gray-800">
+                Pilih Kanal Pembayaran:
+              </label>
+
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                {/* BCA */}
                 <button
                   type="button"
                   onClick={() => setPaymentMethod('bca')}
-                  className={`p-3.5 rounded-xl border text-left transition-all flex items-center justify-between ${
-                    paymentMethod === 'bca' 
-                      ? 'border-black bg-gray-50 ring-2 ring-black font-bold' 
-                      : 'border-gray-200 hover:border-gray-400 bg-white font-medium'
+                  className={`p-3 rounded-xl border text-center transition-all flex flex-col items-center justify-center gap-1.5 ${
+                    paymentMethod === 'bca'
+                      ? 'border-black bg-black text-white font-bold shadow-xs'
+                      : 'border-gray-200 hover:border-black text-gray-700 bg-white'
                   }`}
                 >
-                  <div className="flex items-center gap-2.5">
-                    <span className="w-8 h-8 rounded-lg bg-blue-900 text-white flex items-center justify-center font-extrabold text-[10px]">
-                      BCA
-                    </span>
-                    <div>
-                      <p className="text-gray-900">BCA Virtual Account</p>
-                      <p className="text-[10px] text-gray-500 font-normal">Verifikasi Otomatis 24/7</p>
-                    </div>
-                  </div>
-                  {paymentMethod === 'bca' && <CheckCircle2 className="w-4 h-4 text-emerald-600" />}
+                  <Building2 className="w-5 h-5" />
+                  <span className="text-xs">BCA VA</span>
                 </button>
 
+                {/* Mandiri */}
                 <button
                   type="button"
                   onClick={() => setPaymentMethod('mandiri')}
-                  className={`p-3.5 rounded-xl border text-left transition-all flex items-center justify-between ${
-                    paymentMethod === 'mandiri' 
-                      ? 'border-black bg-gray-50 ring-2 ring-black font-bold' 
-                      : 'border-gray-200 hover:border-gray-400 bg-white font-medium'
+                  className={`p-3 rounded-xl border text-center transition-all flex flex-col items-center justify-center gap-1.5 ${
+                    paymentMethod === 'mandiri'
+                      ? 'border-black bg-black text-white font-bold shadow-xs'
+                      : 'border-gray-200 hover:border-black text-gray-700 bg-white'
                   }`}
                 >
-                  <div className="flex items-center gap-2.5">
-                    <span className="w-8 h-8 rounded-lg bg-blue-700 text-amber-300 flex items-center justify-center font-extrabold text-[9px]">
-                      MNDR
-                    </span>
-                    <div>
-                      <p className="text-gray-900">Mandiri Bill Payment</p>
-                      <p className="text-[10px] text-gray-500 font-normal">Konfirmasi Seketika</p>
-                    </div>
-                  </div>
-                  {paymentMethod === 'mandiri' && <CheckCircle2 className="w-4 h-4 text-emerald-600" />}
+                  <CreditCard className="w-5 h-5" />
+                  <span className="text-xs">Mandiri</span>
                 </button>
-              </div>
 
-              {/* Virtual Account Box */}
-              <div className="bg-gray-50 p-5 rounded-xl border border-gray-200 space-y-3">
-                <div className="flex justify-between items-center text-xs">
-                  <span className="text-gray-500 font-medium">Nomor Virtual Account {paymentMethod === 'bca' ? 'BCA' : 'Mandiri'}:</span>
-                  <span className="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded">Aktif 2 Jam</span>
-                </div>
-                <div className="flex items-center justify-between gap-3 bg-white p-3 rounded-lg border border-gray-200">
-                  <span className="font-mono text-lg font-bold text-gray-900 tracking-wider">
-                    {paymentMethod === 'bca' ? '1280 8821 9901 4452' : '8870 1492 8812 0031'}
-                  </span>
-                  <button
-                    onClick={() => handleCopy(paymentMethod === 'bca' ? '1280882199014452' : '8870149288120031', 'Nomor Virtual Account')}
-                    className="flex items-center gap-1.5 px-3 py-1.5 bg-gray-100 hover:bg-black hover:text-white rounded-md text-xs font-semibold text-gray-800 transition-all"
-                  >
-                    <Copy className="w-3.5 h-3.5" />
-                    <span>Salin</span>
-                  </button>
-                </div>
-                <p className="text-[11px] text-gray-500 leading-relaxed">
-                  Transfer tepat hingga nominal rupiah terakhir. Sistem CRM Lumina Studios akan otomatis mendeteksi mutasi dan mengubah status pesanan Anda.
-                </p>
-              </div>
-            </div>
-          )}
-
-          {/* E-Wallet Selection (GoPay, OVO) */}
-          {paymentCategory === 'ewallet' && (
-            <div className="space-y-4">
-              <div className="grid grid-cols-2 gap-3 text-xs">
+                {/* GoPay */}
                 <button
                   type="button"
                   onClick={() => setPaymentMethod('gopay')}
-                  className={`p-3.5 rounded-xl border text-left transition-all flex items-center justify-between ${
-                    paymentMethod === 'gopay' 
-                      ? 'border-black bg-gray-50 ring-2 ring-black font-bold' 
-                      : 'border-gray-200 hover:border-gray-400 bg-white font-medium'
+                  className={`p-3 rounded-xl border text-center transition-all flex flex-col items-center justify-center gap-1.5 ${
+                    paymentMethod === 'gopay'
+                      ? 'border-black bg-black text-white font-bold shadow-xs'
+                      : 'border-gray-200 hover:border-black text-gray-700 bg-white'
                   }`}
                 >
-                  <div className="flex items-center gap-2.5">
-                    <span className="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-extrabold text-[10px]">
-                      GOPAY
-                    </span>
-                    <div>
-                      <p className="text-gray-900">GoPay / QRIS</p>
-                      <p className="text-[10px] text-gray-500 font-normal">Scan QR Semua Aplikasi</p>
-                    </div>
-                  </div>
-                  {paymentMethod === 'gopay' && <CheckCircle2 className="w-4 h-4 text-emerald-600" />}
+                  <QrCode className="w-5 h-5" />
+                  <span className="text-xs">GoPay QRIS</span>
                 </button>
 
+                {/* DANA */}
                 <button
                   type="button"
-                  onClick={() => setPaymentMethod('ovo')}
-                  className={`p-3.5 rounded-xl border text-left transition-all flex items-center justify-between ${
-                    paymentMethod === 'ovo' 
-                      ? 'border-black bg-gray-50 ring-2 ring-black font-bold' 
-                      : 'border-gray-200 hover:border-gray-400 bg-white font-medium'
+                  onClick={() => setPaymentMethod('dana')}
+                  className={`p-3 rounded-xl border text-center transition-all flex flex-col items-center justify-center gap-1.5 ${
+                    paymentMethod === 'dana'
+                      ? 'border-black bg-black text-white font-bold shadow-xs'
+                      : 'border-gray-200 hover:border-black text-gray-700 bg-white'
                   }`}
                 >
-                  <div className="flex items-center gap-2.5">
-                    <span className="w-8 h-8 rounded-lg bg-purple-700 text-white flex items-center justify-center font-extrabold text-[10px]">
-                      OVO
-                    </span>
-                    <div>
-                      <p className="text-gray-900">OVO Cash</p>
-                      <p className="text-[10px] text-gray-500 font-normal">Notifikasi HP Instan</p>
-                    </div>
-                  </div>
-                  {paymentMethod === 'ovo' && <CheckCircle2 className="w-4 h-4 text-emerald-600" />}
+                  <Wallet className="w-5 h-5" />
+                  <span className="text-xs">DANA</span>
                 </button>
               </div>
-
-              {/* QRIS / E-Wallet Box */}
-              <div className="bg-gray-50 p-5 rounded-xl border border-gray-200 flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left">
-                <div className="w-32 h-32 bg-white p-2 rounded-xl border border-gray-200 flex flex-col items-center justify-center shadow-xs">
-                  <QrCode className="w-24 h-24 text-gray-900" />
-                  <span className="text-[9px] font-bold text-gray-500 mt-1 uppercase">QRIS Terverifikasi</span>
-                </div>
-                <div className="space-y-1.5 text-xs flex-1">
-                  <p className="font-bold text-gray-900 text-sm">Pindai Kode QR Melalui Aplikasi {paymentMethod.toUpperCase()}</p>
-                  <p className="text-gray-500 leading-relaxed">
-                    Buka aplikasi {paymentMethod === 'gopay' ? 'GoPay, BCA Mobile, atau e-wallet apa saja' : 'OVO'} di smartphone Anda, lalu arahkan kamera ke kode QR untuk menyelesaikan otorisasi pembayaran.
-                  </p>
-                  <p className="text-emerald-700 font-semibold pt-1">
-                    Total: {formatRupiah(totalAmountToPay)}
-                  </p>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Action Button to Complete Payment Mockup */}
-          <div className="pt-4 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-3">
-            <div className="flex items-center gap-2 text-xs text-gray-500">
-              <ShieldCheck className="w-4 h-4 text-emerald-600" />
-              <span>Pembayaran terenkripsi 256-bit standar PCI-DSS perbankan.</span>
             </div>
 
-            <button
-              onClick={handleConfirmPayment}
-              disabled={isProcessingPayment}
-              className="w-full sm:w-auto px-8 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-sm disabled:opacity-50"
-            >
-              {isProcessingPayment ? (
-                <>
-                  <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-                  <span>Memverifikasi Pembayaran...</span>
-                </>
-              ) : (
-                <>
-                  <CheckCircle2 className="w-4 h-4" />
-                  <span>Konfirmasi & Simulasikan Pembayaran Lunas</span>
-                </>
+            {/* Payment Details Container */}
+            <div className="p-4 rounded-xl border border-gray-200 bg-white space-y-3 text-xs">
+              {paymentMethod === 'bca' && (
+                <div className="space-y-2">
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-500 font-medium">Nomor Virtual Account BCA:</span>
+                    <button
+                      onClick={() => handleCopy('1280 8821 9901 4452', 'Nomor BCA VA')}
+                      className="text-emerald-700 hover:text-emerald-800 font-bold flex items-center gap-1 text-[11px]"
+                    >
+                      <Copy className="w-3 h-3" />
+                      <span>Salin No. VA</span>
+                    </button>
+                  </div>
+                  <div className="p-3 bg-gray-50 rounded-lg font-mono text-base font-bold text-gray-900 tracking-wider">
+                    1280 8821 9901 4452
+                  </div>
+                  <p className="text-[11px] text-gray-500">Atas nama: <strong>PT LUMINA MEDIA PRODUKSI</strong></p>
+                </div>
               )}
-            </button>
-          </div>
-        </div>
-      )}
 
-      {/* STEP 4: HALAMAN SUKSES & STRUK PEMBAYARAN */}
-      {step === 'success' && completedBooking && (
-        <div className="bg-white rounded-2xl border border-gray-200 p-6 sm:p-10 space-y-8 shadow-md animate-fade-in text-center sm:text-left">
-          
-          {/* Success Banner */}
-          <div className="flex flex-col sm:flex-row items-center gap-4 pb-6 border-b border-gray-200">
-            <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
-              <CheckCircle2 className="w-8 h-8" />
+              {paymentMethod === 'mandiri' && (
+                <div className="space-y-2">
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-500 font-medium">Nomor Mandiri Bill Payment:</span>
+                    <button
+                      onClick={() => handleCopy('8870 1492 8812 0031', 'Nomor Mandiri Bill')}
+                      className="text-emerald-700 hover:text-emerald-800 font-bold flex items-center gap-1 text-[11px]"
+                    >
+                      <Copy className="w-3 h-3" />
+                      <span>Salin No. Rekening</span>
+                    </button>
+                  </div>
+                  <div className="p-3 bg-gray-50 rounded-lg font-mono text-base font-bold text-gray-900 tracking-wider">
+                    8870 1492 8812 0031
+                  </div>
+                  <p className="text-[11px] text-gray-500">Kode Perusahaan: <strong>88701 (Lumina Studios)</strong></p>
+                </div>
+              )}
+
+              {paymentMethod === 'gopay' && (
+                <div className="space-y-3 text-center py-2">
+                  <div className="w-36 h-36 mx-auto bg-gray-100 rounded-xl border-2 border-dashed border-gray-300 flex flex-col items-center justify-center p-2">
+                    <QrCode className="w-16 h-16 text-gray-700 mb-1" />
+                    <span className="text-[10px] font-bold text-gray-600 font-mono">QRIS LUMINA</span>
+                  </div>
+                  <p className="text-[11px] text-gray-500">
+                    Buka aplikasi GoPay atau Mobile Banking, lalu scan kode QR di atas untuk pembayaran instan.
+                  </p>
+                </div>
+              )}
+
+              {paymentMethod === 'dana' && (
+                <div className="space-y-2">
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-500 font-medium">Nomor DANA Bisnis (Garut-Bandung):</span>
+                    <button
+                      onClick={() => handleCopy('0812 2345 6789', 'Nomor DANA')}
+                      className="text-emerald-700 hover:text-emerald-800 font-bold flex items-center gap-1 text-[11px]"
+                    >
+                      <Copy className="w-3 h-3" />
+                      <span>Salin No. DANA</span>
+                    </button>
+                  </div>
+                  <div className="p-3 bg-gray-50 rounded-lg font-mono text-base font-bold text-gray-900 tracking-wider">
+                    0812 2345 6789
+                  </div>
+                  <p className="text-[11px] text-gray-500">Nama Akun: <strong>LUMINA STUDIOS OFFICIAL</strong></p>
+                </div>
+              )}
             </div>
-            <div>
-              <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full inline-block mb-1">
-                ✓ Transaksi Sukses & Terverifikasi
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
-                Pemesanan Berhasil Terdaftar!
-              </h2>
-              <p className="text-xs sm:text-sm text-gray-500 mt-1">
-                Data pesanan Anda telah otomatis disinkronkan ke Dasbor Internal Tim Produksi Lumina Studios.
+
+            {/* CTA Submit Simulation */}
+            <div className="space-y-2 pt-2">
+              <button
+                type="button"
+                disabled={isProcessingPayment}
+                onClick={handleConfirmPayment}
+                className="w-full py-3.5 px-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-md active:scale-[0.99] disabled:opacity-75"
+              >
+                {isProcessingPayment ? (
+                  <>
+                    <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                    <span>Memverifikasi Pembayaran...</span>
+                  </>
+                ) : (
+                  <>
+                    <CheckCircle2 className="w-4 h-4" />
+                    <span>Konfirmasi Pembayaran ({formatRupiah(totalAmountToPay)})</span>
+                  </>
+                )}
+              </button>
+              <p className="text-[10px] text-center text-gray-400">
+                🔒 Simulasi terhubung langsung dengan sistem CRM & pembukuan kas Lumina.
               </p>
             </div>
           </div>
+        </section>
+      )}
 
-          {/* Receipt Card */}
-          <div className="bg-gray-50 rounded-xl border border-gray-200 p-6 space-y-4 text-xs font-medium">
-            <div className="flex flex-col sm:flex-row justify-between pb-3 border-b border-gray-200 gap-2">
+      {/* ======================================================== */}
+      {/* STEP 4: HALAMAN SUKSES (STRUK & TOMBOL KEMBALI)           */}
+      {/* ======================================================== */}
+      {step === 'success' && completedBooking && (
+        <section className="max-w-2xl mx-auto bg-white rounded-2xl border border-gray-200 p-6 sm:p-10 space-y-6 shadow-md text-left">
+          
+          {/* Header Status */}
+          <div className="flex items-center gap-4 pb-6 border-b border-gray-100">
+            <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-2xl shrink-0">
+              <Check className="w-6 h-6 stroke-[3]" />
+            </div>
+            <div>
+              <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full inline-block">
+                Pembayaran Berhasil Diverifikasi
+              </span>
+              <h2 className="text-2xl font-extrabold text-gray-900 mt-1">
+                Pemesanan Anda Telah Dikonfirmasi!
+              </h2>
+            </div>
+          </div>
+
+          {/* Struk Rincian Pemesanan */}
+          <div className="bg-gray-50 p-6 rounded-xl border border-gray-200 space-y-4 text-xs font-medium">
+            <div className="flex justify-between items-start pb-3 border-b border-gray-200">
               <div>
-                <span className="text-gray-400 uppercase text-[10px] block">Kode Pesanan:</span>
-                <span className="text-base font-extrabold text-gray-900">{completedBooking.bookingCode}</span>
+                <span className="text-gray-400 text-[10px] uppercase font-mono block">KODE PESANAN:</span>
+                <span className="text-base font-mono font-extrabold text-gray-900">{completedBooking.bookingCode}</span>
               </div>
-              <div className="sm:text-right">
-                <span className="text-gray-400 uppercase text-[10px] block">Nomor Faktur Resmi:</span>
-                <span className="text-sm font-bold text-gray-900">{completedBooking.invoiceNumber}</span>
+              <div className="text-right">
+                <span className="text-gray-400 text-[10px] uppercase font-mono block">NOMOR FAKTUR:</span>
+                <span className="font-mono font-bold text-gray-900">{completedBooking.invoiceNumber}</span>
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-gray-700">
+            <div className="grid grid-cols-2 gap-4 text-gray-700">
               <div>
-                <span className="text-gray-400 text-[11px] block">Nama Pelanggan:</span>
+                <span className="text-gray-400 text-[11px] block">Pelanggan:</span>
                 <span className="font-bold text-gray-900">{completedBooking.clientName}</span>
               </div>
               <div>
+                <span className="text-gray-400 text-[11px] block">No. WhatsApp:</span>
+                <span className="font-bold text-gray-900">{completedBooking.whatsapp}</span>
+              </div>
+              <div>
                 <span className="text-gray-400 text-[11px] block">Paket Layanan:</span>
-                <span className="font-bold text-gray-900">{selectedPackage.name}</span>
+                <span className="font-bold text-gray-900">{completedBooking.packageName}</span>
+              </div>
+              <div>
+                <span className="text-gray-400 text-[11px] block">Area Produksi:</span>
+                <span className="font-bold text-gray-900">Wilayah {completedBooking.location}</span>
               </div>
               <div>
                 <span className="text-gray-400 text-[11px] block">Tanggal Produksi:</span>
-                <span className="font-bold text-gray-900">{formatDateIndo(completedBooking.eventDate)}</span>
+                <span className="font-bold text-gray-900">{completedBooking.eventDate}</span>
               </div>
               <div>
                 <span className="text-gray-400 text-[11px] block">Metode Pembayaran:</span>
-                <span className="font-bold text-gray-900">{completedBooking.paymentMethodName} (Terverifikasi)</span>
+                <span className="font-bold text-gray-900">{completedBooking.paymentMethodName} (Lunas)</span>
               </div>
             </div>
 
             <div className="pt-3 border-t border-gray-200 flex justify-between items-center text-sm font-bold">
-              <span className="text-gray-700">Total Nominal Dibayar:</span>
-              <span className="text-lg text-emerald-700 font-extrabold">{formatRupiah(completedBooking.totalPaidNow)}</span>
+              <span>Total Terbayar:</span>
+              <span className="text-lg text-emerald-700 font-extrabold">
+                {formatRupiah(completedBooking.totalPaidNow)}
+              </span>
             </div>
           </div>
 
-          {/* Real-time Integration Callout */}
-          <div className="bg-blue-50/70 border border-blue-200 rounded-xl p-4 flex items-start gap-3 text-xs">
-            <Sparkles className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
-            <div className="space-y-1">
-              <p className="font-bold text-blue-900">
-                Data Terhubung Real-Time ke Dasbor CRM Internal
-              </p>
-              <p className="text-blue-700 leading-relaxed font-normal">
-                Pesanan <strong>{completedBooking.bookingCode}</strong> telah otomatis terdaftar sebagai kartu baru di kolom <em>Terkonfirmasi (DP)</em> pada <strong>Pipeline Prospek & Pesanan</strong>, serta menambahkan saldo pemasukan di <strong>Faktur & Keuangan</strong>.
-              </p>
-            </div>
+          {/* Real-time sync notification badge */}
+          <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-xs space-y-1">
+            <p className="font-bold text-emerald-950 flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+              Sinkronisasi Real-Time Berhasil ke Dasbor Admin
+            </p>
+            <p className="text-emerald-800 leading-relaxed">
+              Data pesanan Anda telah otomatis muncul sebagai card baru pada kolom <strong>"Pesanan Masuk" / "Prospek"</strong> di modul Pipeline dan nominalnya telah menambah <strong>Total Saldo Masuk</strong> di modul Faktur Keuangan!
+            </p>
           </div>
 
-          {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
+          {/* Action Buttons: Kembali ke Beranda & Lihat di Admin */}
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-3 pt-2">
             <button
-              onClick={() => {
-                setStep('catalog');
-                setFormData({
-                  customerName: '',
-                  whatsapp: '',
-                  email: '',
-                  productionDate: '2026-11-20',
-                  venue: 'Studio A (White Cyclorama) - Lumina Jakarta',
-                  notes: 'Sesi foto komersial baru.',
-                  paymentOption: 'dp'
-                });
-              }}
-              className="w-full sm:w-auto px-4 py-2.5 border border-gray-300 hover:border-black rounded-lg text-xs font-semibold text-gray-700 hover:bg-gray-50"
+              onClick={handleBackToHome}
+              className="w-full sm:w-auto px-5 py-3 border border-gray-300 rounded-xl text-xs font-bold text-gray-700 hover:bg-gray-50 flex items-center justify-center gap-2 transition-all"
             >
-              + Buat Pemesanan Lain
+              <Home className="w-4 h-4" />
+              <span>Kembali ke Beranda</span>
             </button>
 
             <button
               onClick={onSwitchToAdmin}
-              className="w-full sm:w-auto px-6 py-2.5 bg-black hover:bg-gray-800 text-white font-bold rounded-lg text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-sm"
+              className="w-full sm:w-auto px-6 py-3 bg-black hover:bg-neutral-800 text-white font-bold rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-sm transition-all"
             >
-              <span>Buka Dasbor Internal (Lihat Hasil di CRM)</span>
+              <span>Buka Dasbor Admin (Lihat Card Baru)</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
-
-        </div>
+        </section>
       )}
 
     </div>
