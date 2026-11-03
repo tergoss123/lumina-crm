@@ -6,10 +6,12 @@ import { PipelineView } from './components/PipelineView';
 import { CalendarView } from './components/CalendarView';
 import { PostProductionView } from './components/PostProductionView';
 import { InvoicesView } from './components/InvoicesView';
+import { CustomerPortal } from './components/CustomerPortal';
 import { BookingInspector } from './components/BookingInspector';
 import { InvoiceModal } from './components/InvoiceModal';
 import { NewBookingModal } from './components/NewBookingModal';
 import { Toast } from './components/Toast';
+import { ArrowRightLeft, Sparkles, User, LayoutDashboard, ShieldCheck } from 'lucide-react';
 
 import { 
   INITIAL_BOOKINGS, 
@@ -19,6 +21,9 @@ import {
 } from './data/mockData';
 
 export function App() {
+  // App Mode: 'admin' (Internal CRM Dashboard) | 'customer' (Customer-Facing Portal)
+  const [appMode, setAppMode] = useState('admin');
+  
   const [activeTab, setActiveTab] = useState('overview');
   const [bookings, setBookings] = useState(INITIAL_BOOKINGS);
   const [invoices, setInvoices] = useState(INITIAL_INVOICES);
@@ -74,7 +79,7 @@ export function App() {
     }
   };
 
-  // Advance stage
+  // Advance stage in Kanban pipeline
   const handleAdvanceStage = (bookingId, nextStageId) => {
     handleUpdateBookingStatus(bookingId, nextStageId);
     showToast({
@@ -84,7 +89,7 @@ export function App() {
     });
   };
 
-  // Revert stage
+  // Revert stage in Kanban pipeline
   const handleRevertStage = (bookingId, prevStageId) => {
     handleUpdateBookingStatus(bookingId, prevStageId);
     showToast({
@@ -131,7 +136,7 @@ export function App() {
     });
   };
 
-  // Add new booking
+  // Add new booking created via Admin Intake Modal
   const handleCreateNewBooking = (newBooking) => {
     setBookings(prev => [newBooking, ...prev]);
 
@@ -163,6 +168,14 @@ export function App() {
     });
   };
 
+  // Callback when a customer books & pays via CustomerPortal (Real-time Monolith Sync!)
+  const handleCustomerBookingCreated = (newBookingRecord, newInvoiceRecord) => {
+    setBookings(prev => [newBookingRecord, ...prev]);
+    setInvoices(prev => [newInvoiceRecord, ...prev]);
+    // Set active tab to pipeline so when switching to Admin mode, the user immediately sees the new card!
+    setActiveTab('pipeline');
+  };
+
   // Find active invoice for modal
   const activeInvoice = invoices.find(inv => inv.id === activeInvoiceId);
 
@@ -172,81 +185,132 @@ export function App() {
   }).length;
 
   return (
-    <div className="min-h-screen bg-[#FAFAFA] flex flex-col font-sans text-[#0A0A0A]">
+    <div className="min-h-screen bg-[#F8F9FA] flex flex-col font-sans text-[#111827]">
       {/* Toast Notification */}
       <Toast toast={toast} onClose={() => setToast(null)} />
+
+      {/* Persistent Floating Mode Switcher Button (Corner pill for easy demo) */}
+      <aside 
+        aria-label="Mode Switcher Navigation"
+        className="fixed bottom-20 md:bottom-6 right-4 z-50 flex items-center gap-1.5 p-1.5 bg-[#111827] text-white rounded-full shadow-2xl border border-gray-700/80 backdrop-blur-md transition-all hover:scale-105"
+      >
+        <button
+          onClick={() => setAppMode('customer')}
+          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold transition-all ${
+            appMode === 'customer' 
+              ? 'bg-white text-black shadow-md' 
+              : 'text-gray-300 hover:text-white'
+          }`}
+        >
+          <User className="w-3.5 h-3.5" />
+          <span>View as Customer</span>
+        </button>
+
+        <button
+          onClick={() => setAppMode('admin')}
+          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold transition-all ${
+            appMode === 'admin' 
+              ? 'bg-white text-black shadow-md' 
+              : 'text-gray-300 hover:text-white'
+          }`}
+        >
+          <LayoutDashboard className="w-3.5 h-3.5" />
+          <span>View as Admin (CRM)</span>
+        </button>
+
+        <div className="hidden lg:flex items-center gap-1 pr-2 pl-1 text-[10px] text-emerald-400 font-semibold border-l border-gray-700">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>Live Sync</span>
+        </div>
+      </aside>
 
       {/* App Shell Header */}
       <Header
         onOpenNewBooking={() => setNewBookingModalOpen(true)}
         activeTab={activeTab}
-        pendingCount={bookings.filter(b => b.workflowStatus === 'Inquiry').length}
+        pendingCount={bookings.filter(b => b.workflowStatus === 'Inquiry' || b.workflowStatus === 'Booked').length}
         onOpenQuickAction={() => setActiveTab('pipeline')}
+        appMode={appMode}
+        onToggleAppMode={() => setAppMode(prev => prev === 'admin' ? 'customer' : 'admin')}
       />
 
-      {/* Desktop Navigation Tabs */}
-      <DesktopNav
-        activeTab={activeTab}
-        onSelectTab={setActiveTab}
-        counts={{ overdueCount }}
-      />
-
-      {/* Main Content Area */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        {activeTab === 'overview' && (
-          <DashboardView
-            bookings={bookings}
-            invoices={invoices}
-            onSelectBooking={setSelectedBooking}
-            onToggleGearItem={handleToggleGearItem}
-            onUpdateBookingStatus={handleUpdateBookingStatus}
-            onNavigateToTab={setActiveTab}
+      {/* Main Content Render based on appMode */}
+      {appMode === 'customer' ? (
+        /* CUSTOMER-FACING PORTAL (Katalog, Checkout, Mockup Gateway, Success Receipt) */
+        <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <CustomerPortal
+            onBookingCreated={handleCustomerBookingCreated}
+            onSwitchToAdmin={() => setAppMode('admin')}
             showToast={showToast}
           />
-        )}
-
-        {activeTab === 'pipeline' && (
-          <PipelineView
-            bookings={bookings}
-            onSelectBooking={setSelectedBooking}
-            onAdvanceStage={handleAdvanceStage}
-            onRevertStage={handleRevertStage}
-            onOpenNewBooking={() => setNewBookingModalOpen(true)}
+        </main>
+      ) : (
+        /* INTERNAL CRM DASBOR (Ringkasan, Pipeline, Kalender, Pasca-Prod, Faktur) */
+        <>
+          {/* Desktop Navigation Tabs */}
+          <DesktopNav
+            activeTab={activeTab}
+            onSelectTab={setActiveTab}
+            counts={{ overdueCount }}
           />
-        )}
 
-        {activeTab === 'calendar' && (
-          <CalendarView
-            bookings={bookings}
-            crewList={STUDIO_CREW}
-            showToast={showToast}
-            onSelectBooking={setSelectedBooking}
+          <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            {activeTab === 'overview' && (
+              <DashboardView
+                bookings={bookings}
+                invoices={invoices}
+                onSelectBooking={setSelectedBooking}
+                onToggleGearItem={handleToggleGearItem}
+                onUpdateBookingStatus={handleUpdateBookingStatus}
+                onNavigateToTab={setActiveTab}
+                showToast={showToast}
+              />
+            )}
+
+            {activeTab === 'pipeline' && (
+              <PipelineView
+                bookings={bookings}
+                onSelectBooking={setSelectedBooking}
+                onAdvanceStage={handleAdvanceStage}
+                onRevertStage={handleRevertStage}
+                onOpenNewBooking={() => setNewBookingModalOpen(true)}
+              />
+            )}
+
+            {activeTab === 'calendar' && (
+              <CalendarView
+                bookings={bookings}
+                crewList={STUDIO_CREW}
+                showToast={showToast}
+                onSelectBooking={setSelectedBooking}
+              />
+            )}
+
+            {activeTab === 'postprod' && (
+              <PostProductionView
+                bookings={bookings}
+                showToast={showToast}
+              />
+            )}
+
+            {activeTab === 'invoices' && (
+              <InvoicesView
+                invoices={invoices}
+                onOpenInvoiceModal={setActiveInvoiceId}
+                onSimulatePayFull={handleSimulatePayFull}
+                showToast={showToast}
+              />
+            )}
+          </main>
+
+          {/* Persistent Mobile Bottom Navigation Bar for Admin */}
+          <MobileBottomNav
+            activeTab={activeTab}
+            onSelectTab={setActiveTab}
+            counts={{ overdueCount }}
           />
-        )}
-
-        {activeTab === 'postprod' && (
-          <PostProductionView
-            bookings={bookings}
-            showToast={showToast}
-          />
-        )}
-
-        {activeTab === 'invoices' && (
-          <InvoicesView
-            invoices={invoices}
-            onOpenInvoiceModal={setActiveInvoiceId}
-            onSimulatePayFull={handleSimulatePayFull}
-            showToast={showToast}
-          />
-        )}
-      </main>
-
-      {/* Persistent Mobile Bottom Navigation Bar */}
-      <MobileBottomNav
-        activeTab={activeTab}
-        onSelectTab={setActiveTab}
-        counts={{ overdueCount }}
-      />
+        </>
+      )}
 
       {/* Slide-over Selected Booking Inspector Drawer */}
       {selectedBooking && (
@@ -270,7 +334,7 @@ export function App() {
         />
       )}
 
-      {/* New Booking / Lead Intake Modal */}
+      {/* New Booking / Lead Intake Modal (Admin) */}
       <NewBookingModal
         isOpen={newBookingModalOpen}
         onClose={() => setNewBookingModalOpen(false)}

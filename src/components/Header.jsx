@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Plus, SlidersHorizontal, Bell, Clock, ShieldCheck, Sparkles } from 'lucide-react';
+import { Plus, SlidersHorizontal, Bell, Clock, ShieldCheck, Sparkles, User, LayoutDashboard, ArrowRightLeft } from 'lucide-react';
 
-export const Header = ({ onOpenNewBooking, activeTab, pendingCount, onOpenQuickAction }) => {
+export const Header = ({ 
+  onOpenNewBooking, 
+  activeTab, 
+  pendingCount, 
+  onOpenQuickAction,
+  appMode,
+  onToggleAppMode 
+}) => {
   const [time, setTime] = useState('');
 
   useEffect(() => {
@@ -52,11 +59,13 @@ export const Header = ({ onOpenNewBooking, activeTab, pendingCount, onOpenQuickA
                   Lumina Studios
                 </h1>
                 <span className="text-xs font-semibold px-2 py-0.5 bg-gray-100 text-gray-600 rounded">
-                  CRM & Produksi
+                  {appMode === 'customer' ? 'Portal Pelanggan' : 'CRM & Produksi'}
                 </span>
               </div>
               <p className="text-xs text-gray-500 font-normal">
-                Sistem Manajemen Pemesanan & Alur Kerja Studio
+                {appMode === 'customer' 
+                  ? 'Katalog Layanan & Reservasi Sesi Studio' 
+                  : 'Sistem Manajemen Pemesanan & Alur Kerja Studio'}
               </p>
             </div>
           </div>
@@ -64,32 +73,56 @@ export const Header = ({ onOpenNewBooking, activeTab, pendingCount, onOpenQuickA
           <div className="hidden lg:flex items-center gap-2 pl-6 border-l border-gray-200">
             <div className="px-2.5 py-1 bg-gray-50 text-gray-700 text-xs font-medium rounded border border-gray-200 flex items-center gap-1.5">
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-              <span>Data Terverifikasi</span>
+              <span>Real-Time State Terhubung</span>
             </div>
             {pendingCount > 0 && (
               <span className="px-2.5 py-1 bg-amber-50 text-amber-800 text-xs font-medium rounded border border-amber-200">
-                {pendingCount} Prospek Menunggu Respon
+                {pendingCount} Pesanan Baru Masuk
               </span>
             )}
           </div>
         </div>
 
         <div className="flex items-center gap-2 sm:gap-3">
+          
+          {/* Mode Switch Button in Header */}
           <button
-            onClick={() => onOpenQuickAction && onOpenQuickAction('filter')}
-            className="hidden sm:flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold border border-gray-300 hover:border-gray-900 hover:bg-gray-50 rounded-lg transition-all text-gray-700"
+            onClick={onToggleAppMode}
+            className={`flex items-center gap-2 px-3.5 py-2 text-xs font-bold rounded-lg transition-all shadow-xs border ${
+              appMode === 'customer' 
+                ? 'bg-black text-white hover:bg-gray-800 border-black' 
+                : 'bg-emerald-50 text-emerald-800 hover:bg-emerald-100 border-emerald-200'
+            }`}
+            title="Ganti Mode Tampilan"
           >
-            <SlidersHorizontal className="w-3.5 h-3.5" />
-            <span>Filter Cepat</span>
+            <ArrowRightLeft className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">
+              {appMode === 'customer' ? 'Beralih ke Tim Internal (CRM)' : 'Buka Portal Pelanggan'}
+            </span>
+            <span className="sm:hidden">
+              {appMode === 'customer' ? 'CRM Admin' : 'Pelanggan'}
+            </span>
           </button>
 
-          <button
-            onClick={onOpenNewBooking}
-            className="flex items-center gap-2 px-4 py-2 bg-black hover:bg-gray-800 text-white text-xs font-semibold rounded-lg transition-all shadow-sm active:scale-[0.98]"
-          >
-            <Plus className="w-4 h-4" />
-            <span>+ Pesanan Baru</span>
-          </button>
+          {appMode === 'admin' && (
+            <>
+              <button
+                onClick={() => onOpenQuickAction && onOpenQuickAction('filter')}
+                className="hidden md:flex items-center gap-1.5 px-3 py-2 text-xs font-semibold border border-gray-300 hover:border-gray-900 hover:bg-gray-50 rounded-lg transition-all text-gray-700"
+              >
+                <SlidersHorizontal className="w-3.5 h-3.5" />
+                <span>Filter</span>
+              </button>
+
+              <button
+                onClick={onOpenNewBooking}
+                className="flex items-center gap-1.5 px-3.5 py-2 bg-black hover:bg-gray-800 text-white text-xs font-semibold rounded-lg transition-all shadow-sm active:scale-[0.98]"
+              >
+                <Plus className="w-4 h-4" />
+                <span>+ Pesanan</span>
+              </button>
+            </>
+          )}
         </div>
       </div>
     </header>
