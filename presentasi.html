@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="id" class="h-full bg-[#0F172A]">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Presentasi UI/UX & Panduan Penggunaan — Lumina Studios CRM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['Space Mono', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    .slide { display: none; }
+    .slide.active { display: flex; }
+    @media print {
+      body { background: white !important; color: black !important; }
+      .slide { display: block !important; page-break-after: always; height: 100vh; }
+      .no-print { display: none !important; }
+    }
+  </style>
+</head>
+<body class="h-full text-slate-100 font-sans flex flex-col justify-between select-none overflow-hidden bg-gradient-to-br from-slate-950 via-[#111827] to-slate-900">
+
+  <!-- Top Bar Controls -->
+  <header class="no-print h-14 border-b border-slate-800/80 px-6 flex items-center justify-between bg-slate-950/70 backdrop-blur-md z-30">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-lg bg-white text-black font-extrabold flex items-center justify-center font-display text-base">
+        L
+      </div>
+      <div>
+        <span class="font-display font-bold text-sm text-white tracking-tight">LUMINA STUDIOS</span>
+        <span class="text-[10px] text-emerald-400 font-mono ml-2 uppercase font-semibold">Deck Presentasi UI/UX</span>
+      </div>
+    </div>
+
+    <!-- Slide progress & indicator -->
+    <div class="flex items-center gap-3">
+      <span id="slide-indicator" class="text-xs font-mono text-slate-400 bg-slate-900 border border-slate-800 px-3 py-1 rounded-full">
+        Slide 1 / 10
+      </span>
+      <div class="flex items-center bg-slate-900 border border-slate-800 rounded-lg p-0.5">
+        <button onclick="prevSlide()" class="p-1.5 hover:bg-slate-800 rounded text-slate-300 hover:text-white transition-colors" title="Sebelumnya (Panah Kiri)">
+          ◀
+        </button>
+        <button onclick="nextSlide()" class="p-1.5 hover:bg-slate-800 rounded text-slate-300 hover:text-white transition-colors" title="Berikutnya (Panah Kanan / Spasi)">
+          ▶
+        </button>
+      </div>
+      <button onclick="toggleFullscreen()" class="hidden sm:inline-flex text-xs px-2.5 py-1 bg-slate-800 hover:bg-slate-700 rounded text-slate-300 font-medium border border-slate-700">
+        ⛶ Layar Penuh
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Slides Viewport -->
+  <main class="flex-1 flex items-center justify-center p-4 sm:p-8 max-w-7xl w-full mx-auto relative z-10 overflow-y-auto">
+
+    <!-- ======================================================== -->
+    <!-- SLIDE 1: COVER SLIDE                                     -->
+    <!-- ======================================================== -->
+    <div class="slide active flex-col justify-center items-start w-full max-w-5xl space-y-6 text-left animate-fade">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold tracking-wider uppercase font-mono">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>Sistem Web Monolith & CRM Produksi</span>
+      </div>
+      <h1 class="text-4xl sm:text-6xl font-extrabold font-display tracking-tight text-white leading-tight">
+        Lumina Studios CRM &<br/>Portal Pemesanan Pelanggan
+      </h1>
+      <p class="text-base sm:text-xl text-slate-300 max-w-3xl leading-relaxed font-light">
+        Arsitektur UI/UX, Panduan Alur Pengguna, & Demonstrasi Reaktivitas Global State Antara Jalur Pelanggan (<code class="text-emerald-400 bg-slate-900 px-2 py-0.5 rounded font-mono">/customer</code>) dan Tim Internal (<code class="text-blue-400 bg-slate-900 px-2 py-0.5 rounded font-mono">/admin</code>).
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full pt-4 border-t border-slate-800/80">
+        <div class="p-4 bg-slate-900/60 border border-slate-800 rounded-xl">
+          <span class="text-[10px] uppercase font-mono text-slate-400 block font-bold">Wilayah Layanan</span>
+          <span class="text-sm font-bold text-white mt-1 block">Garut & Bandung Raya</span>
+          <span class="text-xs text-slate-400 mt-0.5 block">5 Paket Dokumentasi & Drone</span>
+        </div>
+        <div class="p-4 bg-slate-900/60 border border-slate-800 rounded-xl">
+          <span class="text-[10px] uppercase font-mono text-slate-400 block font-bold">Infrastruktur Hosting</span>
+          <span class="text-sm font-bold text-emerald-400 mt-1 block">GitHub Pages & Cloudflare</span>
+          <span class="text-xs text-slate-400 mt-0.5 block">Online 24/7 Selalu Aktif</span>
+        </div>
+        <div class="p-4 bg-slate-900/60 border border-slate-800 rounded-xl">
+          <span class="text-[10px] uppercase font-mono text-slate-400 block font-bold">Sinkronisasi Data</span>
+          <span class="text-sm font-bold text-white mt-1 block">Zero Reload Global State</span>
+          <span class="text-xs text-slate-400 mt-0.5 block">Kanban Pipeline & Kas Terhubung</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- SLIDE 2: LATAR BELAKANG & VISI PRODUK                    -->
+    <!-- ======================================================== -->
+    <div class="slide flex-col justify-center w-full max-w-5xl space-y-6 text-left">
+      <div>
+        <span class="text-xs font-mono uppercase tracking-widest text-emerald-400 font-bold">Latar Belakang & Visi</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white mt-1">Mengapa Lumina Studios Dibangun?</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Box Tantangan -->
+        <div class="p-6 bg-red-950/20 border border-red-500/30 rounded-2xl space-y-3">
+          <div class="flex items-center gap-2 text-red-400 font-bold text-sm uppercase tracking-wider font-mono">
+            <span>⚠️ Tantangan Studio Tradisional</span>
+          </div>
+          <ul class="text-xs sm:text-sm text-slate-300 space-y-3">
+            <li class="flex items-start gap-2">
+              <span class="text-red-400 font-bold mt-0.5">✕</span>
+              <span><strong>Pemesanan Tercecer:</strong> Chat WhatsApp bertumpuk, detail tanggal dan konsep sering tertukar.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-red-400 font-bold mt-0.5">✕</span>
+              <span><strong>Jadwal Kru Bentrok:</strong> Pilot drone, fotografer, dan kamera cinema tidak terkoordinasi real-time.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-red-400 font-bold mt-0.5">✕</span>
+              <span><strong>Uang Muka (DP) Tidak Terlacak:</strong> Buku kas terpisah dari lembar kerja produksi, rawan selisih piutang.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Box Solusi -->
+        <div class="p-6 bg-emerald-950/20 border border-emerald-500/30 rounded-2xl space-y-3">
+          <div class="flex items-center gap-2 text-emerald-400 font-bold text-sm uppercase tracking-wider font-mono">
+            <span>✨ Solusi Lumina Studios</span>
+          </div>
+          <ul class="text-xs sm:text-sm text-slate-300 space-y-3">
+            <li class="flex items-start gap-2">
+              <span class="text-emerald-400 font-bold mt-0.5">✓</span>
+              <span><strong>Single Source of Truth:</strong> Satu sistem monolitik mengikat pemesanan klien hingga buku kas.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-emerald-400 font-bold mt-0.5">✓</span>
+              <span><strong>Etalase Eksklusif (/customer):</strong> Klien memilih paket, tanggal, dan simulasi pembayaran secara mandiri.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-emerald-400 font-bold mt-0.5">✓</span>
+              <span><strong>Otomasi Mutasi Kas:</strong> Setiap transaksi otomatis menerbitkan faktur dan menambah saldo kas masuk.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- SLIDE 3: ARSITEKTUR JALUR AKSES                          -->
+    <!-- ======================================================== -->
+    <div class="slide flex-col justify-center w-full max-w-5xl space-y-6 text-left">
+      <div>
+        <span class="text-xs font-mono uppercase tracking-widest text-emerald-400 font-bold">Struktur Akses Routing</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white mt-1">Dua Jalur Akses Terpisah, Satu Sumber Data</h2>
+        <p class="text-sm text-slate-400">Pemisahan antarmuka yang bersih antara pengalaman klien publik dan lingkungan kerja internal tim.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Jalur 1 -->
+        <div class="p-6 bg-slate-900 border-2 border-emerald-500/40 rounded-2xl space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="px-3 py-1 rounded bg-emerald-500/20 text-emerald-300 font-mono text-xs font-bold">/customer</span>
+            <span class="text-xs text-slate-400">Portal Publik</span>
+          </div>
+          <h3 class="text-xl font-bold text-white font-display">Portal Pelanggan Garut & Bandung</h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Halaman awal bagi calon klien untuk melihat 5 paket layanan, mengisi formulir reservasi, memilih pembayaran, dan mengunduh struk digital.
+          </p>
+          <div class="text-xs text-slate-400 space-y-1 pt-2 border-t border-slate-800">
+            <div>• Form Kontak (Nama, WhatsApp, Tanggal, Catatan)</div>
+            <div>• Dropdown Area Khusus (Garut vs Bandung)</div>
+            <div>• Mockup Multi-Kanal (BCA, Mandiri, GoPay, DANA)</div>
+          </div>
+        </div>
+
+        <!-- Jalur 2 -->
+        <div class="p-6 bg-slate-900 border-2 border-blue-500/40 rounded-2xl space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="px-3 py-1 rounded bg-blue-500/20 text-blue-300 font-mono text-xs font-bold">/admin</span>
+            <span class="text-xs text-slate-400">Pusat Komando CRM</span>
+          </div>
+          <h3 class="text-xl font-bold text-white font-display">Dasbor Operasional Tim Studio</h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Pusat manajemen terpadu yang memuat 5 modul kerja internal untuk menjalankan sesi produksi dan pembukuan kas studio.
+          </p>
+          <div class="text-xs text-slate-400 space-y-1 pt-2 border-t border-slate-800">
+            <div>• <strong>Ringkasan:</strong> KPI Arus Kas & Utilisasi Studio</div>
+            <div>• <strong>Pipeline:</strong> Papan Kanban Alur Kerja Pesanan</div>
+            <div>• <strong>Kalender Kru:</strong> Penjadwalan & Call Sheet Kru</div>
+            <div>• <strong>Pasca-Prod:</strong> Lab Grading DaVinci & Cloud Vault</div>
+            <div>• <strong>Faktur:</strong> Buku Kas, Pelunasan, & Pajak PPN</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- SLIDE 4: KATALOG LAYANAN GARUT & BANDUNG                 -->
+    <!-- ======================================================== -->
+    <div class="slide flex-col justify-center w-full max-w-5xl space-y-5 text-left">
+      <div>
+        <span class="text-xs font-mono uppercase tracking-widest text-emerald-400 font-bold">Katalog Layanan</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white mt-1">5 Paket Foto & Video Area Garut & Bandung</h2>
+        <p class="text-sm text-slate-400">Disesuaikan dengan kebutuhan pasar lokal mulai dari wisuda hingga pernikahan lengkap dengan drone.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+        <!-- Paket 1 -->
+        <div class="p-4 bg-slate-900 border border-slate-800 rounded-xl space-y-2 flex flex-col justify-between">
+          <div>
+            <span class="text-[10px] font-mono text-slate-400 uppercase font-bold">Wisuda</span>
+            <h4 class="text-xs font-bold text-white mt-1">Foto Wisuda</h4>
+            <div class="text-base font-extrabold text-emerald-400 mt-1">Rp 350.000</div>
+            <span class="text-[10px] text-slate-400 block">DP: Rp 175.000</span>
+            <p class="text-[11px] text-slate-300 mt-2">45 mnt sesi, 10 foto retouched, 1 cetak 10R + bingkai, Google Drive.</p>
+          </div>
+        </div>
+
+        <!-- Paket 2 -->
+        <div class="p-4 bg-slate-900 border border-slate-800 rounded-xl space-y-2 flex flex-col justify-between">
+          <div>
+            <span class="text-[10px] font-mono text-slate-400 uppercase font-bold">Lamaran</span>
+            <h4 class="text-xs font-bold text-white mt-1">Engagement</h4>
+            <div class="text-base font-extrabold text-emerald-400 mt-1">Rp 1.500.000</div>
+            <span class="text-[10px] text-slate-400 block">DP: Rp 750.000</span>
+            <p class="text-[11px] text-slate-300 mt-2">Liputan 4 jam, 1 foto + 1 video kru, 40 foto edited, highlight 1-2 mnt.</p>
+          </div>
+        </div>
+
+        <!-- Paket 3 (Unggulan) -->
+        <div class="p-4 bg-slate-900 border-2 border-emerald-500 rounded-xl space-y-2 flex flex-col justify-between relative">
+          <span class="absolute top-2 right-2 bg-emerald-500 text-black text-[9px] font-bold px-1.5 py-0.5 rounded">UNGGULAN</span>
+          <div>
+            <span class="text-[10px] font-mono text-emerald-400 uppercase font-bold">Wedding Drone</span>
+            <h4 class="text-xs font-bold text-white mt-1">Wedding Outdoor</h4>
+            <div class="text-base font-extrabold text-emerald-400 mt-1">Rp 3.500.000</div>
+            <span class="text-[10px] text-slate-400 block">DP: Rp 1.750.000</span>
+            <p class="text-[11px] text-slate-300 mt-2">Full-day akad & resepsi, 2 photo + 2 video + drone 4K, album 20 hal.</p>
+          </div>
+        </div>
+
+        <!-- Paket 4 -->
+        <div class="p-4 bg-slate-900 border border-slate-800 rounded-xl space-y-2 flex flex-col justify-between">
+          <div>
+            <span class="text-[10px] font-mono text-slate-400 uppercase font-bold">Outdoor</span>
+            <h4 class="text-xs font-bold text-white mt-1">Pre-Wedding</h4>
+            <div class="text-base font-extrabold text-emerald-400 mt-1">Rp 750.000</div>
+            <span class="text-[10px] text-slate-400 block">DP: Rp 375.000</span>
+            <p class="text-[11px] text-slate-300 mt-2">2-3 jam sesi (Kamojang/Bagendit/Tebing Keraton), 25 foto retouched.</p>
+          </div>
+        </div>
+
+        <!-- Paket 5 -->
+        <div class="p-4 bg-slate-900 border border-slate-800 rounded-xl space-y-2 flex flex-col justify-between">
+          <div>
+            <span class="text-[10px] font-mono text-slate-400 uppercase font-bold">Keluarga</span>
+            <h4 class="text-xs font-bold text-white mt-1">Family Portrait</h4>
+            <div class="text-base font-extrabold text-emerald-400 mt-1">Rp 250.000</div>
+            <span class="text-[10px] text-slate-400 block">DP: Rp 125.000</span>
+            <p class="text-[11px] text-slate-300 mt-2">30-45 mnt sesi studio/rumah, maks 6 org, 5 master edited, cetak 8R.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- SLIDE 5: ALUR PENGGUNA (CHECKOUT & PEMBAYARAN)           -->
+    <!-- ======================================================== -->
+    <div class="slide flex-col justify-center w-full max-w-5xl space-y-6 text-left">
+      <div>
+        <span class="text-xs font-mono uppercase tracking-widest text-emerald-400 font-bold">Alur Pengguna</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white mt-1">4 Langkah Mudah Reservasi Online</h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
+        <div class="p-5 bg-slate-900 border border-slate-800 rounded-xl space-y-2">
+          <div class="w-8 h-8 rounded-full bg-slate-800 text-white font-bold flex items-center justify-center font-mono text-xs">01</div>
+          <h4 class="font-bold text-sm text-white">Pilih Paket</h4>
+          <p class="text-xs text-slate-400">Klien meninjau 5 katalog paket studio di /customer dan mengklik tombol "Pilih Paket Ini".</p>
+        </div>
+
+        <div class="p-5 bg-slate-900 border border-slate-800 rounded-xl space-y-2">
+          <div class="w-8 h-8 rounded-full bg-slate-800 text-white font-bold flex items-center justify-center font-mono text-xs">02</div>
+          <h4 class="font-bold text-sm text-white">Isi Formulir</h4>
+          <p class="text-xs text-slate-400">Input Nama, No. WhatsApp, Dropdown Lokasi (Garut/Bandung), Tanggal Produksi, & Catatan Konsep.</p>
+        </div>
+
+        <div class="p-5 bg-slate-900 border border-slate-800 rounded-xl space-y-2">
+          <div class="w-8 h-8 rounded-full bg-slate-800 text-white font-bold flex items-center justify-center font-mono text-xs">03</div>
+          <h4 class="font-bold text-sm text-white">Simulasi Bayar</h4>
+          <p class="text-xs text-slate-400">Pilih opsi DP 50% / Lunas, lalu pilih BCA, Mandiri, GoPay QRIS, atau DANA Bisnis.</p>
+        </div>
+
+        <div class="p-5 bg-slate-900 border border-emerald-500/50 rounded-xl space-y-2">
+          <div class="w-8 h-8 rounded-full bg-emerald-500 text-black font-bold flex items-center justify-center font-mono text-xs">04</div>
+          <h4 class="font-bold text-sm text-white">Struk Resmi</h4>
+          <p class="text-xs text-slate-400">Struk digital instan terbit dengan kode booking resmi & data otomatis tersinkron ke Admin!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- SLIDE 6: KEAJAIBAN REAKTIVITAS GLOBAL STATE              -->
+    <!-- ======================================================== -->
+    <div class="slide flex-col justify-center w-full max-w-5xl space-y-6 text-left">
+      <div>
+        <span class="text-xs font-mono uppercase tracking-widest text-emerald-400 font-bold">Sinkronisasi Real-Time</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white mt-1">Otomasi Alur Data Tanpa Muat Ulang Halaman</h2>
+        <p class="text-sm text-slate-400">Menghubungkan portal pelanggan publik dengan sistem ERP/CRM tim studio secara instan.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Reaktivitas Pipeline -->
+        <div class="p-6 bg-slate-900 border border-emerald-500/40 rounded-2xl space-y-3">
+          <div class="flex items-center gap-2 text-emerald-400 font-bold text-sm font-mono">
+            <span>📋 Sinkronisasi Papan Kanban Pipeline</span>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Ketika pelanggan menekan tombol <strong>"Konfirmasi Pembayaran"</strong> di <code class="text-emerald-400 font-mono">/customer</code>:
+          </p>
+          <div class="p-3 bg-slate-950 rounded-lg border border-slate-800 text-xs font-mono text-emerald-300 space-y-1">
+            <div>⚡ Kartu baru otomatis muncul di Kolom "Pesanan Masuk" / "Prospek"</div>
+            <div>⚡ Badge hijau berkedip [PORTAL ONLINE]</div>
+            <div>⚡ Counter pesanan bertambah seketika</div>
+          </div>
+        </div>
+
+        <!-- Reaktivitas Keuangan -->
+        <div class="p-6 bg-slate-900 border border-blue-500/40 rounded-2xl space-y-3">
+          <div class="flex items-center gap-2 text-blue-400 font-bold text-sm font-mono">
+            <span>💰 Sinkronisasi Modul Faktur & Arus Kas</span>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Transaksi pembayaran diverifikasi instan dan memperbarui buku besar keuangan di <code class="text-blue-400 font-mono">/admin</code>:
+          </p>
+          <div class="p-3 bg-slate-950 rounded-lg border border-slate-800 text-xs font-mono text-blue-300 space-y-1">
+            <div>✓ Angka TOTAL DITAGIHKAN & KAS MASUK bertambah</div>
+            <div>✓ Faktur baru langsung terbit di baris teratas ledger</div>
+            <div>✓ Kepatuhan pajak PPN 11% & PPh 23 tercatat otomatis</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- SLIDE 7: 5 MODUL DASBOR ADMIN CRM                        -->
+    <!-- ======================================================== -->
+    <div class="slide flex-col justify-center w-full max-w-5xl space-y-4 text-left">
+      <div>
+        <span class="text-xs font-mono uppercase tracking-widest text-emerald-400 font-bold">Dasbor Internal</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white mt-1">Eksplorasi 5 Modul Kerja Tim (/admin)</h2>
+      </div>
+
+      <div class="space-y-2.5">
+        <div class="p-3.5 bg-slate-900 border border-slate-800 rounded-xl flex items-center justify-between">
+          <div class="space-y-0.5">
+            <span class="text-sm font-bold text-white">1. Ringkasan Studio (Overview KPI)</span>
+            <p class="text-xs text-slate-400">Monitoring utilisasi panggung studio 8K, okupansi set Cyclorama, dan status Gear Check.</p>
+          </div>
+          <span class="text-xs font-mono bg-slate-800 px-2 py-1 rounded text-slate-300">Executive KPI</span>
+        </div>
+
+        <div class="p-3.5 bg-slate-900 border border-slate-800 rounded-xl flex items-center justify-between">
+          <div class="space-y-0.5">
+            <span class="text-sm font-bold text-white">2. Pipeline Prospek & Pesanan (Kanban)</span>
+            <p class="text-xs text-slate-400">Alur kerja 6 tahap dari Pesanan Masuk, Penawaran, DP, Syuting, Pasca-Prod, hingga Selesai.</p>
+          </div>
+          <span class="text-xs font-mono bg-slate-800 px-2 py-1 rounded text-slate-300">Kanban Board</span>
+        </div>
+
+        <div class="p-3.5 bg-slate-900 border border-slate-800 rounded-xl flex items-center justify-between">
+          <div class="space-y-0.5">
+            <span class="text-sm font-bold text-white">3. Kalender Produksi Kru (Call Sheets)</span>
+            <p class="text-xs text-slate-400">Penjadwalan fotografer, videografer, pilot drone, gaffer, dan lembar panggilan kru harian.</p>
+          </div>
+          <span class="text-xs font-mono bg-slate-800 px-2 py-1 rounded text-slate-300">Jadwal & Armada</span>
+        </div>
+
+        <div class="p-3.5 bg-slate-900 border border-slate-800 rounded-xl flex items-center justify-between">
+          <div class="space-y-0.5">
+            <span class="text-sm font-bold text-white">4. Lab Pasca-Produksi & Pengiriman</span>
+            <p class="text-xs text-slate-400">Pelacakan 5 tahap grading DaVinci Resolve, frame review klien, dan galeri private cloud ber-PIN.</p>
+          </div>
+          <span class="text-xs font-mono bg-slate-800 px-2 py-1 rounded text-slate-300">Editing & Vault</span>
+        </div>
+
+        <div class="p-3.5 bg-slate-900 border border-slate-800 rounded-xl flex items-center justify-between">
+          <div class="space-y-0.5">
+            <span class="text-sm font-bold text-white">5. Faktur & Arus Kas (Invoices Ledger)</span>
+            <p class="text-xs text-slate-400">Buku besar tagihan klien, verifikasi mutasi bank/e-wallet, serta audit pajak PPN 11% & PPh 23.</p>
+          </div>
+          <span class="text-xs font-mono bg-slate-800 px-2 py-1 rounded text-slate-300">Treasury & Pajak</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- SLIDE 8: IDENTITAS VISUAL & DESIGN SYSTEM                -->
+    <!-- ======================================================== -->
+    <div class="slide flex-col justify-center w-full max-w-5xl space-y-6 text-left">
+      <div>
+        <span class="text-xs font-mono uppercase tracking-widest text-emerald-400 font-bold">Desain Sistem</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white mt-1">Estetika Editorial Mewah (Google Stitch Standards)</h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="p-5 bg-slate-900 border border-slate-800 rounded-xl space-y-3">
+          <span class="text-xs font-mono text-emerald-400 font-bold uppercase block">Palet Monokromatik</span>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Perpaduan <strong>Deep Jet Black</strong> (#000000 / #111827), <strong>Pure White</strong> (#FFFFFF), dan garis batas <strong>Hairline 1px</strong> (#E5E7EB) menghadirkan nuansa majalah mode kelas atas.
+          </p>
+        </div>
+
+        <div class="p-5 bg-slate-900 border border-slate-800 rounded-xl space-y-3">
+          <span class="text-xs font-mono text-emerald-400 font-bold uppercase block">Tipografi Terkalibrasi</span>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Kombinasi <strong>Plus Jakarta Sans</strong> untuk headline editorial, <strong>Inter</strong> untuk keterbacaan body text maksimal, dan <strong>Space Mono</strong> untuk angka moneter & kode faktur.
+          </p>
+        </div>
+
+        <div class="p-5 bg-slate-900 border border-slate-800 rounded-xl space-y-3">
+          <span class="text-xs font-mono text-emerald-400 font-bold uppercase block">Mikro-Interaksi Halus</span>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Indikator denyut (pulsing badge), slide-over drawer instan, tombol switcher mengambang (*floating pill*), dan layout responsif *mobile-first*.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- SLIDE 9: PANDUAN PRAKTIK DEMO LIVE                       -->
+    <!-- ======================================================== -->
+    <div class="slide flex-col justify-center w-full max-w-5xl space-y-5 text-left">
+      <div>
+        <span class="text-xs font-mono uppercase tracking-widest text-emerald-400 font-bold">Skenario Presentasi</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white mt-1">Langkah Demonstrasi Live di Hadapan Audiens</h2>
+      </div>
+
+      <div class="space-y-2.5">
+        <div class="p-3 bg-slate-900 border border-slate-800 rounded-xl flex items-start gap-3">
+          <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-mono text-xs font-bold shrink-0">STEP 1</span>
+          <p class="text-xs text-slate-300">Buka link <code class="text-emerald-400 font-mono">https://tergoss123.github.io/lumina-crm/#customer</code>. Kenalkan kepada audiens bahwa ini adalah portal klien untuk wilayah Garut & Bandung.</p>
+        </div>
+
+        <div class="p-3 bg-slate-900 border border-slate-800 rounded-xl flex items-start gap-3">
+          <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-mono text-xs font-bold shrink-0">STEP 2</span>
+          <p class="text-xs text-slate-300">Pilih <strong>Paket Wedding Outdoor + Cinematic Drone (Rp 3.500.000)</strong>. Isi nama pemesan, nomor WA, pilih lokasi <strong>Garut</strong>, dan opsi DP 50%.</p>
+        </div>
+
+        <div class="p-3 bg-slate-900 border border-slate-800 rounded-xl flex items-start gap-3">
+          <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-mono text-xs font-bold shrink-0">STEP 3</span>
+          <p class="text-xs text-slate-300">Pilih kanal <strong>DANA</strong> atau <strong>BCA VA</strong>. Tekan <strong>"Konfirmasi Pembayaran"</strong>. Tunjukkan kemunculan struk pemesanan resmi.</p>
+        </div>
+
+        <div class="p-3 bg-slate-900 border border-slate-800 rounded-xl flex items-start gap-3">
+          <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-mono text-xs font-bold shrink-0">STEP 4</span>
+          <p class="text-xs text-slate-300">Klik tombol switcher <strong>"View as Admin (CRM)"</strong> di sudut kanan bawah untuk berpindah peran ke tim internal studio.</p>
+        </div>
+
+        <div class="p-3 bg-slate-900 border border-slate-800 rounded-xl flex items-start gap-3">
+          <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-mono text-xs font-bold shrink-0">STEP 5</span>
+          <p class="text-xs text-slate-300">Buktikan bahwa pesanan klien tersebut <strong>langsung muncul di kolom "Pesanan Masuk" di Pipeline</strong> dan <strong>saldo kas bertambah di Faktur Keuangan</strong>!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- SLIDE 10: TAUTAN RESMI & PENUTUP                         -->
+    <!-- ======================================================== -->
+    <div class="slide flex-col justify-center items-start w-full max-w-5xl space-y-6 text-left">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold font-mono uppercase">
+        <span>Sesi Tanya Jawab (Q&A)</span>
+      </div>
+      <h2 class="text-4xl sm:text-5xl font-extrabold font-display text-white">Terima Kasih</h2>
+      <p class="text-sm sm:text-base text-slate-300 max-w-2xl">
+        Ekosistem Lumina Studios siap digunakan baik untuk reservasi klien secara mandiri maupun manajemen operasional studio profesional.
+      </p>
+
+      <div class="p-5 bg-slate-900/90 border border-slate-800 rounded-2xl w-full max-w-3xl space-y-3 font-mono text-xs">
+        <div class="text-slate-400 uppercase font-bold text-[11px] border-b border-slate-800 pb-2">Tautan Akses Aktif 24/7:</div>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+          <span class="text-slate-400">🌐 Tautan Utama (GitHub Pages):</span>
+          <a href="https://tergoss123.github.io/lumina-crm/" target="_blank" class="text-emerald-400 hover:underline font-bold">https://tergoss123.github.io/lumina-crm/</a>
+        </div>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+          <span class="text-slate-400">⚡ Tautan Cadangan (Cloudflare):</span>
+          <a href="https://lumina-crm.shorthaired-abacus.workers.dev" target="_blank" class="text-blue-400 hover:underline">https://lumina-crm.shorthaired-abacus.workers.dev</a>
+        </div>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+          <span class="text-slate-400">📁 Repositori Kode Sumber:</span>
+          <a href="https://github.com/tergoss123/lumina-crm" target="_blank" class="text-purple-400 hover:underline">github.com/tergoss123/lumina-crm</a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Bottom Navigation / Key Hints -->
+  <footer class="no-print h-12 border-t border-slate-800/80 px-6 flex items-center justify-between bg-slate-950/80 text-xs text-slate-400 z-30">
+    <div class="flex items-center gap-4">
+      <span>Gunakan tombol <kbd class="px-1.5 py-0.5 rounded bg-slate-800 text-slate-200 border border-slate-700">◀</kbd> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 text-slate-200 border border-slate-700">▶</kbd> atau <kbd class="px-1.5 py-0.5 rounded bg-slate-800 text-slate-200 border border-slate-700">Spasi</kbd> untuk berpindah slide</span>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="./Presentasi_Lumina_Studios_CRM_UI_UX.pptx" download class="text-emerald-400 hover:text-emerald-300 font-bold flex items-center gap-1">
+        📥 Unduh File PPTX
+      </a>
+      <span class="text-slate-600">|</span>
+      <span>© 2026 Lumina Studios</span>
+    </div>
+  </footer>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+
+    function updateSlide() {
+      slides.forEach((s, idx) => {
+        if (idx === currentSlide) {
+          s.classList.add('active');
+        } else {
+          s.classList.remove('active');
+        }
+      });
+      document.getElementById('slide-indicator').innerText = 'Slide ' + (currentSlide + 1) + ' / ' + slides.length;
+    }
+
+    function nextSlide() {
+      if (currentSlide < slides.length - 1) {
+        currentSlide++;
+        updateSlide();
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 0) {
+        currentSlide--;
+        updateSlide();
+      }
+    }
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+    }
+
+    // Keyboard navigation
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        e.preventDefault();
+        nextSlide();
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault();
+        prevSlide();
+      } else if (e.key === 'f' || e.key === 'F') {
+        toggleFullscreen();
+      } else if (e.key === 'Home') {
+        currentSlide = 0;
+        updateSlide();
+      } else if (e.key === 'End') {
+        currentSlide = slides.length - 1;
+        updateSlide();
+      }
+    });
+  </script>
+
+</body>
+</html>
